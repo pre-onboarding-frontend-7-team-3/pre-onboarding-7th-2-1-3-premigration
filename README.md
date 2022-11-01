@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# 원티드 프리온보딩 프론트엔드 3팀 - 2weeks - 1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 목적:
+>
+> 프로젝트 기간 : 
+>
+> ### [배포링크]
 
-## Available Scripts
+</br>
 
-In the project directory, you can run:
+## 📖 목차
 
-### `npm start`
+- [실행 방법](#%EF%B8%8F-실행-방법)
+- [협업 과정](#-협업-과정)
+- [Best Practice 및 채택 근거](#%EF%B8%8F-best-practice-및-채택-근거)
+- [팀 코드 컨벤션](#-팀-코드-컨벤션)
+- [사용 기술](#-사용-기술)
+- [폴더 구조](#폴더-구조)
+- [팀원](#-팀원)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⌨️ 실행 방법
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+</br>
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ☑️ Best Practice 및 채택 근거
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## 🔒 팀 코드 컨벤션
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [ ] git commit message 컨벤션
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| 커밋명   | 내용                                        |
+| -------- | ------------------------------------------- |
+| feat     | 파일, 폴더, 새로운 기능 추가                |
+| fix      | 버그 수정                                   |
+| docs     | 제품 코드 수정 없음                         |
+| style    | 코드 형식, 정렬, 주석 등의 변경             |
+| refactor | 코드 리팩토링                               |
+| test     | 테스트 코드 추가                            |
+| chore    | 환경설정, 빌드 업무, 패키지 매니저 설정등.. |
+| hotfix   | 치명적이거나 급한 버그 수정                 |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [ ] branch 컨벤션
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+| 브랜치명 | 내용                         |
+| -------- | ---------------------------- |
+| develop  | 파일, 폴더, 새로운 기능 추가 |
+| fix      | 버그 수정                    |
+| docs     | 제품 코드 수정 없음          |
+| refactor | 코드 리팩토링                |
+| hotfix   | 치명적이거나 급한 버그 수정  |
 
-## Learn More
+</br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔨 사용 기술
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+</br>
 
-### Code Splitting
+## 📦 폴더 구조
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## 👨‍👩‍👧‍👦 팀원
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+|                                               조은지<br/>(팀장)                                                |                                               고영훈<br/>(서기)                                               |                                               김창희<br/>(팀원)                                               |                                             박정민<br/>(팀원)                                             |                                               문지원<br/>(팀원)                                                |                                               이상민<br/>(팀원)                                                |                                               이지원<br/>(팀원)                                               |                                           조수진<br/>(팀원)                                            |
+| :------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: |
+| <img src="https://avatars.githubusercontent.com/u/95282989?s=96&v=4" alt="Joeunji0119" width="60" height="60"> | <img src="https://avatars.githubusercontent.com/u/65995664?s=96&v=4" alt="YeonghunKO" width="60" height="60"> | <img src="https://avatars.githubusercontent.com/u/45018724?s=96&v=4" alt="PiperChang" width="60" height="60"> | <img src="https://avatars.githubusercontent.com/u/55550034?s=96&v=4" alt="ono212" width="60" height="60"> | <img src="https://avatars.githubusercontent.com/u/78708082?s=96&v=4" alt="moonkorea00" width="60" height="60"> | <img src="https://avatars.githubusercontent.com/u/28257740?s=96&v=4" alt="dltkdals224" width="60" height="60"> | <img src="https://avatars.githubusercontent.com/u/86206374?s=96&v=4" alt="365supprot" width="60" height="60"> | <img src="https://avatars.githubusercontent.com/u/110365677?v=4" alt="suzz-in" width="60" height="60"> |
+|                                 [Joeunji0119](https://github.com/Joeunji0119)                                  |                                  [YeonghunKO](https://github.com/YeonghunKO)                                  |                                  [PiperChang](https://github.com/PiperChang)                                  |                                    [ono212](https://github.com/ono212)                                    |                                 [moonkorea00](https://github.com/moonkorea00)                                  |                                 [dltkdals224](https://github.com/dltkdals224)                                  |                                  [365support](https://github.com/365support)                                  |                                 [suzz-in](https://github.com/suzz-in)                                  |
