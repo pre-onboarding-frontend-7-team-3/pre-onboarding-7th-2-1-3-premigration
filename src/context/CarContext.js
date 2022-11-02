@@ -1,10 +1,11 @@
-import { createContext, useState, useReducer, useEffect, useCallback } from "react";
+import { createContext, useReducer, useEffect, useCallback, useContext } from "react";
 import { getCars } from "apis";
-
-import { carReducer } from "helpers/useCarReducer";
+import { CAR_ACTION_TYPES, carReducer } from "helpers/useCarReducer";
 
 const state = {
   carList: [],
+  loading: false,
+  error: null,
   selectedCar: null,
 };
 
@@ -12,26 +13,32 @@ export const CarContext = createContext("");
 
 export default function CarContextWrapper({ children }) {
   const [carState, dispatch] = useReducer(carReducer, state);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
 
   const getCarsHandler = useCallback((params = {}) => {
-    setIsLoading(true);
+    dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_LOADING });
     getCars(params)
       .then((res) => {
-        dispatch({ type: "GET", cars: res });
-        setIsLoading(false);
+        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_SUCCESS, cars: res });
       })
       .catch((error) => {
-        setErrorMessage(error);
+        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_ERROR });
+        throw new Error(error);
       });
   }, []);
 
   useEffect(getCarsHandler, []);
 
   return (
-    <CarContext.Provider value={{ carState, isLoading, errorMessage, getCars: getCarsHandler }}>
+    <CarContext.Provider value={{ carState, getCars: getCarsHandler }}>
       {children}
     </CarContext.Provider>
   );
 }
+
+export const useCarState = () => {
+  const state = useContext(CarContext);
+  if (!state) {
+    throw new Error("Error finding CarContext Provider");
+  }
+  return state;
+};
