@@ -10,6 +10,11 @@ const GlobalStyle = createGlobalStyle`
      text-decoration: none;
      font-family: 'Inter';
      font-style: normal;
+     -ms-overflow-style: none;
+     scrollbar-width: none;
+     ::-webkit-scrollbar { 
+         display: none;
+     }
     }
 
     button{
