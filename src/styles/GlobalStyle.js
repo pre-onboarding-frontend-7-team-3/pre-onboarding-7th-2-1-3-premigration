@@ -21,6 +21,12 @@ body {
 ol, ul {
 	list-style: none;
 }
+button {
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
 blockquote, q {
 	quotes: none;
 }

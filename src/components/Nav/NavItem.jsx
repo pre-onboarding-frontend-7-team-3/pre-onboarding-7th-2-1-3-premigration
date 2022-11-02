@@ -1,20 +1,20 @@
 import { CarContext } from "context/CarContext";
 import { useContext } from "react";
-import { NavItemStyle } from "./Nav.style";
+import { NavItemStyle, NavButton } from "./Nav.style";
 
-import Button from "../common/Button";
-
-function NavItem({ text, type }) {
+function NavItem({ text, type, idx, selectedCategory, setSelectedCategory }) {
   const { getCars } = useContext(CarContext);
+
   const handleNavBox = () => {
     getCars({ segment: type });
+    setSelectedCategory(idx);
     console.log("nav type", type);
   };
   return (
     <NavItemStyle>
-      <Button borderRadius="62px" onClick={handleNavBox}>
+      <NavButton onClick={handleNavBox} idx={idx} selectedCategory={selectedCategory}>
         {text}
-      </Button>
+      </NavButton>
     </NavItemStyle>
   );
 }
