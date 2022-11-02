@@ -7,7 +7,6 @@ const Wrapper = styled.div`
   flex-direction: column;
 
   width: 100%;
-  max-width: 450px;
 `;
 
 function LayOut({ children }) {

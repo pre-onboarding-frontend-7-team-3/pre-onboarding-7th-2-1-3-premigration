@@ -18,8 +18,7 @@ export const InnerWrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  width: 90%;
-  min-width: 324px;
+  width: 100%;
 `;
 
 export const TextWrapper = styled.div`
@@ -30,7 +29,7 @@ export const TextWrapper = styled.div`
 
   width: 120px;
 
-  padding: 5px;
+  /* padding: 5px; */
   gap: 8px;
 `;
 
