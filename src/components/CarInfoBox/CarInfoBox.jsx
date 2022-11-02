@@ -1,6 +1,7 @@
 import { CarInfoBoxStyle } from "./CarInfoBox.style";
-
-function CarInfoBox({ attribute: { brand, name } }) {
+import isNew from "utils/isNew";
+function CarInfoBox({ attribute: { brand, name }, createdAt}) {
+  console.log(isNew(createdAt))
   return (
     <CarInfoBoxStyle>
       {brand}
