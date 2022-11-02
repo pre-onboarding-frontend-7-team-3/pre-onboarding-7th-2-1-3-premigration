@@ -58,14 +58,16 @@ export const SubInfo = styled.div`
 export const ImageWrapper = styled.div`
   position: relative;
   display: flex;
+  margin-right: 0vw;
 
-  width: 150px;
-  height: 100px;
+  width: 40vw;
+  height: 15vh;
 
   background-color: ${(props) => props.theme.GRAY};
 `;
 
 export const ButtonWrapper = styled.div`
   position: absolute;
-  right: 0;
+  right: 4%;
+  top: 4%;
 `;
