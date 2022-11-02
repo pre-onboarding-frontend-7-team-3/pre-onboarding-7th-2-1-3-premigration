@@ -35,7 +35,13 @@ export default function CarContextWrapper({ children }) {
 
   return (
     <CarContext.Provider
-      value={{ carState, isLoading, errorMessage, getCars: getCarsHandler, findCarsHandler }}
+      value={{
+        carState,
+        isLoading,
+        errorMessage,
+        getCars: getCarsHandler,
+        findCars: findCarsHandler,
+      }}
     >
       {children}
     </CarContext.Provider>

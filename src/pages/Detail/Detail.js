@@ -1,3 +1,4 @@
+import Header from "components/Header";
 import { CarContext } from "context/CarContext";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -5,30 +6,31 @@ import { useParams } from "react-router-dom";
 function Detail() {
   const { id } = useParams();
 
-  const [carInfo, setCarInfo] = useState(null);
-
   const {
-    carState: { selectedCar },
-    findCarsHandler,
+    carState: { carList, selectedCar },
+    findCars,
+    isLoading,
   } = useContext(CarContext);
 
-  console.log(id);
-
   useEffect(() => {
-    findCarsHandler(id);
-    setCarInfo(selectedCar);
-  }, []);
+    console.log("id", id);
+
+    console.log("loading", isLoading);
+    findCars(id);
+  }, [carList]);
+
   return (
-    <div>
-      {carInfo && (
+    <section>
+      <Header title="차량상세" />
+      {selectedCar?.length && (
         <>
           <div>
-            {carInfo[0].attribute.brand}
-            {carInfo[0].attribute.name}
+            {selectedCar[0]?.attribute.brand}
+            {selectedCar[0]?.attribute.name}
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 }
 
