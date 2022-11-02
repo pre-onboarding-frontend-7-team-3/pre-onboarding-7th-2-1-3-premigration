@@ -1,6 +1,8 @@
 import { useCarState } from "../../context/CarContext";
 import { NavItemStyle } from "./Nav.style";
 
+import Button from "../common/Button";
+
 function NavItem({ text, type }) {
   const { getCars } = useCarState();
 
@@ -8,7 +10,13 @@ function NavItem({ text, type }) {
     getCars({ segment: type });
     console.log("nav type", type);
   };
-  return <NavItemStyle onClick={handleNavBox}>{text}</NavItemStyle>;
+  return (
+    <NavItemStyle>
+      <Button borderRadius="62px" onClick={handleNavBox}>
+        {text}
+      </Button>
+    </NavItemStyle>
+  );
 }
 
 export default NavItem;
