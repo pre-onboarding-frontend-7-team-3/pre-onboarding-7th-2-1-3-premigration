@@ -7,7 +7,6 @@ export const carReducer = (state, action) => {
         ...state,
         selectedCar: [
           state.carList.find((car) => {
-            console.log(car);
             return car.id === parseInt(action.id);
           }),
         ],
