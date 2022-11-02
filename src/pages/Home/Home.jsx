@@ -8,7 +8,6 @@ function Home() {
     carState: { carList },
     isLoading,
     errorMessage,
-    getCars,
   } = useContext(CarContext);
 
   return (
