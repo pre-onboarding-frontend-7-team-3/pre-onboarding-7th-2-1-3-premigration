@@ -25,15 +25,18 @@ const NavItemStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  white-space: nowrap;
 `;
 
 const NavButton = styled.button`
-  width: 62px;
+  width: 100%;
   height: 27px;
+
+  padding: 5px 18px;
 
   border-radius: 62px;
 
-  font-weight: 700;
   font-size: 14px;
   font-weight: 700;
 

@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { NavWrapper } from "./Nav.style";
-import { NavData } from "./NavData";
+import { NAV_ITEM_DATA } from "./NavData";
 import NavItem from "./NavItem";
 
 function Nav() {
   const [selectedCategory, setSelectedCategory] = useState(0);
   return (
     <NavWrapper>
-      {NavData.map(({ text, type }, idx) => {
+      {NAV_ITEM_DATA.map(({ text, segment, fuelType }, idx) => {
         return (
           <NavItem
             key={idx}
             text={text}
-            type={type}
+            segment={segment}
+            fuelType={fuelType}
             idx={idx}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}

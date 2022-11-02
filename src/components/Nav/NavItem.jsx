@@ -2,13 +2,12 @@ import { CarContext } from "context/CarContext";
 import { useContext } from "react";
 import { NavItemStyle, NavButton } from "./Nav.style";
 
-function NavItem({ text, type, idx, selectedCategory, setSelectedCategory }) {
+function NavItem({ text, segment, fuelType, idx, selectedCategory, setSelectedCategory }) {
   const { getCars } = useContext(CarContext);
 
   const handleNavBox = () => {
-    getCars({ segment: type });
+    getCars({ fuelType, segment });
     setSelectedCategory(idx);
-    console.log("nav type", type);
   };
   return (
     <NavItemStyle>
