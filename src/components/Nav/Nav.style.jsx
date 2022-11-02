@@ -5,10 +5,9 @@ const NavWrapper = styled.div`
   align-items: center;
 
   width: 100%;
-  max-width: 450px;
-  gap: 20px;
+  gap: 10px;
 
-  padding: 8px 0;
+  padding: 2vw 3vw;
 
   border-bottom: 1px solid ${(props) => props.theme.BLACK};
 
@@ -25,8 +24,6 @@ const NavItemStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  margin: 0 12px;
 
   cursor: pointer;
 `;
