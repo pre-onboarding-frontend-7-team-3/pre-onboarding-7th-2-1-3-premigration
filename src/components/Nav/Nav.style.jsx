@@ -4,7 +4,7 @@ const NavWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  width: 100%;
+  width: 92%;
   gap: 10px;
 
   padding: 2vw 3vw;

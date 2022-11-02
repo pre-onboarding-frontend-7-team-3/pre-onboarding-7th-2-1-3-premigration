@@ -12,7 +12,7 @@ function Home() {
   } = useContext(CarContext);
 
   return (
-    <section>
+    <section style={{ width: "100%" }}>
       <Nav />
       {isLoading ? <p>loading...</p> : <CarList carList={carList} />}
     </section>

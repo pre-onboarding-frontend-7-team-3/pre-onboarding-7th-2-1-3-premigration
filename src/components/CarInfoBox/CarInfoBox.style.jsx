@@ -5,7 +5,7 @@ export const Wrapper = styled.article`
   justify-content: center;
   align-items: center;
 
-  width: 100%;
+  width: 98%;
   max-width: 450px;
   height: 120px;
 
