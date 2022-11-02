@@ -1,13 +1,18 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
+import { carListApi } from "../Api/client";
 
 export const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
-  const [filter, setFilter] = useState([]);
+  const [cars, setCars] = useState([]);
 
-  return <FilterContext.Provider value={(filter, setFilter)}>{children}</FilterContext.Provider>;
+  useEffect(() => {
+    carListApi().then(({ data }) => {
+      setCars(data.payload);
+    });
+  }, []);
+
+  return <FilterContext.Provider value={{ cars, setCars }}>{children}</FilterContext.Provider>;
 };
 
-export const useFilter = () => {
-  useContext(FilterContext);
-};
+export const useFilter = () => useContext(FilterContext);

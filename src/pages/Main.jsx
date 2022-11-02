@@ -2,20 +2,22 @@ import React from "react";
 import styled from "@emotion/styled";
 import Header from "../components/Header";
 import Catagories from "../components/Catagories";
-import useCarData from "../useCarData";
-// import { FilterProvider } from "../contexts/FilterContext";
+import CarData from "../components/CarData";
+// import CarList from "../components/CarList";
+// import { carFirstList } from "../Api/client";
+
+import { FilterProvider } from "../contexts/filterContext";
 
 const Main = () => {
   return (
     <>
-      <MainLayout>
-        <Header />
-        {/* <FilterProvider> */}
-        <Catagories />
-        {/* carList data 불러오는 함수 */}
-        {useCarData()}
-        {/* </FilterProvider> */}
-      </MainLayout>
+      <FilterProvider>
+        <MainLayout>
+          <Header />
+          <Catagories />
+          <CarData />
+        </MainLayout>
+      </FilterProvider>
     </>
   );
 };

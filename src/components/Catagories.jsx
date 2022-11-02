@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { carListApi } from "../Api/client";
+import { useFilter } from "../contexts/filterContext";
 
 const TAGS = [
   {
     id: 1,
     filter: "전체",
-    query: "",
+    query: " ",
   },
   {
     id: 2,
     filter: "대형",
-    query: "E",
+    query: "SUV",
   },
 
   {
@@ -27,11 +28,18 @@ const TAGS = [
 ];
 
 const Catagories = () => {
+  const { setCars } = useFilter();
+  const queryButton = (e, query) => {
+    carListApi(e, query).then(({ data }) => {
+      setCars(data.payload);
+    });
+  };
+
   return (
     <CatagoriesContainer>
       {TAGS.map((tag) => {
         return (
-          <CatagoriesTag key={tag.id} onClick={() => carListApi(tag)}>
+          <CatagoriesTag key={tag.id} onClick={(e) => queryButton(e, tag.query)}>
             {tag.filter}
           </CatagoriesTag>
         );

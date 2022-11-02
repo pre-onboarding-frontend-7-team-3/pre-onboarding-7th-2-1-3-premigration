@@ -1,24 +1,36 @@
 import { React } from "react";
+import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import NewTag from "./NewTag";
 
 const CarList = ({ car }) => {
+  // const createdAt = car.createdAt
+  console.log(car.id);
   return (
-    <CarListContainer>
-      <CarDetailForText>
-        <BrandAndName>
-          {car.attribute.brand}
-          <br />
-          {car.attribute.name}
-        </BrandAndName>
-        <SegmentAndPayment>
-          {car.attribute.segment} / {car.attribute.fuelType}
-          <br />월 {car.amount} 원 부터
-        </SegmentAndPayment>
-      </CarDetailForText>
-      <CarImgContainer>
-        <CarImg src={car.attribute.imageUrl} />
-      </CarImgContainer>
-    </CarListContainer>
+    <Link to={`/${car.id}`}>
+      <CarListContainer>
+        <CarDetailForText>
+          <BrandAndName>
+            {car.attribute.brand}
+            <br />
+            {car.attribute.name}
+          </BrandAndName>
+          <SegmentAndPayment>
+            {car.attribute.segment === "ㅊ"
+              ? (car.attribute.segment = "대형")
+              : car.attribute.segment === "D"
+              ? (car.attribute.segment = "중형")
+              : (car.attribute.segment = "소형")}
+            / {car.attribute.fuelType}
+            <br />월 {car.amount} 원 부터
+          </SegmentAndPayment>
+        </CarDetailForText>
+        <CarImgContainer>
+          {<NewTag />}
+          <CarImg src={car.attribute.imageUrl} />
+        </CarImgContainer>
+      </CarListContainer>
+    </Link>
   );
 };
 
