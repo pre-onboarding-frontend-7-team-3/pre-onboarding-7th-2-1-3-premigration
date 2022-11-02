@@ -1,20 +1,16 @@
 import CarList from "components/CarList";
 import Nav from "components/Nav";
-import { CarContext } from "context/CarContext";
-import { useContext, useEffect } from "react";
+import { useCarState } from "../../context/CarContext";
 
 function Home() {
   const {
-    carState: { carList },
-    isLoading,
-    errorMessage,
-    getCars,
-  } = useContext(CarContext);
+    carState: { carList, loading },
+  } = useCarState();
 
   return (
     <section>
       <Nav />
-      {isLoading ? <p>loading...</p> : <CarList carList={carList} />}
+      {loading ? <p>loading...</p> : <CarList carList={carList} />}
     </section>
   );
 }
