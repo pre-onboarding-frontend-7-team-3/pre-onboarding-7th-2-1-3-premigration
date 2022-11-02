@@ -1,14 +1,10 @@
-<<<<<<< main
 import { CarInfoBoxStyle } from "./CarInfoBox.style";
 import isNew from "utils/isNew";
-function CarInfoBox({ attribute: { brand, name }, createdAt}) {
-  console.log(isNew(createdAt))
-=======
+
 import Button from "../common/Button";
 import * as Style from "./CarInfoBox.style";
 
 function CarInfoBox({ attribute: { brand, name } }) {
->>>>>>> Fix: CarInfoBox Style 수정
   return (
     <Style.Wrapper>
       <Style.InnerWrapper>
