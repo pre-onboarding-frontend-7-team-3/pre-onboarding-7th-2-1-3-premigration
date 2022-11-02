@@ -3,7 +3,15 @@ export const carReducer = (state, action) => {
     case "GET":
       return { ...state, carList: [...action.cars] };
     case "FIND":
-      break;
+      return {
+        ...state,
+        selectedCar: [
+          state.carList.find((car) => {
+            console.log(car);
+            return car.id === parseInt(action.id);
+          }),
+        ],
+      };
 
     default:
       break;

@@ -27,10 +27,16 @@ export default function CarContextWrapper({ children }) {
       });
   }, []);
 
+  const findCarsHandler = (id) => {
+    dispatch({ type: "FIND", id });
+  };
+
   useEffect(getCarsHandler, []);
 
   return (
-    <CarContext.Provider value={{ carState, isLoading, errorMessage, getCars: getCarsHandler }}>
+    <CarContext.Provider
+      value={{ carState, isLoading, errorMessage, getCars: getCarsHandler, findCarsHandler }}
+    >
       {children}
     </CarContext.Provider>
   );
