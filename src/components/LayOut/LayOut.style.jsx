@@ -2,8 +2,15 @@ import styled from "styled-components";
 
 export const LayOutHeader = styled.header`
   display: flex;
-  color: blueviolet;
   justify-content: center;
-  font-size: 30px;
+  align-items: center;
+
+  width: 100%;
+  max-width: 450px;
+  height: 60px;
+
   border-bottom: 1px solid black;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 21;
 `;
