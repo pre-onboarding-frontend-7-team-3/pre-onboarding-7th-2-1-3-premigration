@@ -40,7 +40,7 @@ const NavButton = styled.button`
   ${({ theme, selectedCategory, idx }) =>
     css`
       background-color: ${idx === selectedCategory ? theme.BLACK : theme.GRAY};
-      color: ${idx === selectedCategory ? theme.GRAY : theme.BLACK};
+      color: ${idx === selectedCategory ? theme.WHITE : theme.BLACK};
     `}
 
   cursor: pointer;
