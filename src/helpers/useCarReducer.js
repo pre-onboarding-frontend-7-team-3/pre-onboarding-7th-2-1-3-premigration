@@ -9,9 +9,9 @@ export const CAR_ACTION_TYPES = {
 export const carReducer = (state, action) => {
   switch (action.type) {
     case CAR_ACTION_TYPES.GET_CAR_LIST_LOADING:
-      return { ...state, loading: true };
+      return { ...state, loading: true, error: false };
     case CAR_ACTION_TYPES.GET_CAR_LIST_SUCCESS:
-      return { ...state, carList: [...action.cars], loading: false };
+      return { ...state, carList: [...action.cars], loading: false, error: false };
     case CAR_ACTION_TYPES.GET_CAR_LIST_ERROR:
       return { ...state, loading: false, error: true };
     case CAR_ACTION_TYPES.FIND_CAR_DETAIL:
