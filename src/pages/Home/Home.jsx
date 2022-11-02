@@ -1,4 +1,3 @@
-import { getCars } from "apis";
 import Nav from "components/Nav";
 import { CarContext } from "context/CarContext";
 import { useContext, useEffect } from "react";
