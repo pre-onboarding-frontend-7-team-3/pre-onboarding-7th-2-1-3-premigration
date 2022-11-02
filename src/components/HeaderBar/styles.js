@@ -10,4 +10,5 @@ export const Header = styled.header`
   font-size: 17px;
   line-height: 21px;
   position: relative;
+  border-bottom: 1px solid #000000;
 `;
