@@ -12,8 +12,7 @@ function Home() {
   } = useContext(CarContext);
 
   return (
-    <section>
-      <Header title="전체 차량" />
+    <section style={{ width: "100%" }}>
       <Nav />
       {isLoading ? <p>loading...</p> : <CarList carList={carList} />}
     </section>
