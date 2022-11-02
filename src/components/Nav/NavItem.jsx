@@ -1,9 +1,9 @@
-import { CarContext } from "context/CarContext";
-import { useContext } from "react";
+import { useCarState } from "../../context/CarContext";
 import { NavItemStyle } from "./Nav.style";
 
 function NavItem({ text, type }) {
-  const { getCars } = useContext(CarContext);
+  const { getCars } = useCarState();
+
   const handleNavBox = () => {
     getCars({ segment: type });
     console.log("nav type", type);
