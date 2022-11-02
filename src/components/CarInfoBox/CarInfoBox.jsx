@@ -1,11 +1,14 @@
 import { CarInfoBoxStyle } from "./CarInfoBox.style";
 import isNew from "utils/isNew";
-function CarInfoBox({ attribute: { brand, name }, createdAt}) {
-  console.log(isNew(createdAt))
+import {Link}from 'react-router-dom'
+function CarInfoBox({ attribute: { brand, name, }, id, createdAt}) {
+
   return (
     <CarInfoBoxStyle>
+      <Link to={`/detail/${id}`} >
       {brand}
       {name}
+      </Link>
     </CarInfoBoxStyle>
   );
 }
