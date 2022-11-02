@@ -1,13 +1,6 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import { LayOutHeader } from "./LayOut.style";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-`;
+import { LayOutHeader, Wrapper } from "./LayOut.style";
 
 function LayOut({ children }) {
   return (

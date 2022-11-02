@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 function Detail() {
   const { id } = useParams();
-
   const {
     carState: { carList, selectedCar },
     findCars,
@@ -13,9 +12,6 @@ function Detail() {
   } = useContext(CarContext);
 
   useEffect(() => {
-    console.log("id", id);
-
-    console.log("loading", isLoading);
     findCars(id);
   }, [carList]);
 

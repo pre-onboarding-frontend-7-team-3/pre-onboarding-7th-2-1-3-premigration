@@ -14,3 +14,10 @@ export const LayOutHeader = styled.header`
   font-weight: 700;
   line-height: 21;
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+`;
