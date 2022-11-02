@@ -8,7 +8,7 @@ function Home() {
   } = useCarState();
 
   return (
-    <section>
+    <section style={{ width: "100%" }}>
       <Nav />
       {loading ? <p>loading...</p> : <CarList carList={carList} />}
     </section>

@@ -5,8 +5,8 @@ export const LayOutHeader = styled.header`
   justify-content: center;
   align-items: center;
 
-  width: 100%;
-  max-width: 450px;
+  width: 98%;
+  /* max-width: 450px; */
   height: 60px;
 
   border-bottom: 1px solid black;
