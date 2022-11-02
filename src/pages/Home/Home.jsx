@@ -1,4 +1,5 @@
 import CarList from "components/CarList";
+import Header from "components/Header";
 import Nav from "components/Nav";
 import { CarContext } from "context/CarContext";
 import { useContext, useEffect } from "react";
@@ -12,6 +13,7 @@ function Home() {
 
   return (
     <section>
+      <Header title="전체 차량" />
       <Nav />
       {isLoading ? <p>loading...</p> : <CarList carList={carList} />}
     </section>

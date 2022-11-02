@@ -1,4 +1,4 @@
-import LayOut from "components/LayOut";
+import LayOut from "../src/components/LayOut/LayOut";
 import CarContextWrapper from "context/CarContext";
 import { Home, Detail } from "pages";
 import { Route, Routes } from "react-router-dom";
@@ -7,10 +7,8 @@ function App() {
   return (
     <CarContextWrapper>
       <Routes>
-        <Route element={<LayOut />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/detail/:id" element={<Detail />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </CarContextWrapper>
   );
