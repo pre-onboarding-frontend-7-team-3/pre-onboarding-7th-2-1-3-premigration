@@ -1,19 +1,22 @@
-import { CarInfoBoxStyle } from "./CarInfoBox.style";
-import isNew from "utils/isNew";
-
 import Button from "../common/Button";
 import * as Style from "./CarInfoBox.style";
 import { Link } from "react-router-dom";
 
-function CarInfoBox({ attribute: { brand, name }, id }) {
+function CarInfoBox({ attribute: { brand, name, classType, amount }, id }) {
   return (
-    <Link to={`/detail/${id}`}>
-      <Style.Wrapper>
+    <Style.Wrapper>
+      <Link to={`/detail/${id}`} state={{ idx: "1" }}>
         <Style.InnerWrapper>
-          <Style.TextWrapper>
-            <Style.MainInfo>{brand}</Style.MainInfo>
-            <Style.SubInfo>{name}</Style.SubInfo>
-          </Style.TextWrapper>
+          <Style.AttributeWrapper>
+            <Style.TextWrapper>
+              <Style.MainAttribute>{brand}</Style.MainAttribute>
+              <Style.MainAttribute>{name}</Style.MainAttribute>
+            </Style.TextWrapper>
+            <Style.TextWrapper>
+              <Style.SubAttribute>{brand}</Style.SubAttribute>
+              <Style.SubAttribute>{brand}</Style.SubAttribute>
+            </Style.TextWrapper>
+          </Style.AttributeWrapper>
           <Style.ImageWrapper>
             <Style.ButtonWrapper>
               <Button
@@ -30,8 +33,8 @@ function CarInfoBox({ attribute: { brand, name }, id }) {
             </Style.ButtonWrapper>
           </Style.ImageWrapper>
         </Style.InnerWrapper>
-      </Style.Wrapper>
-    </Link>
+      </Link>
+    </Style.Wrapper>
   );
 }
 
