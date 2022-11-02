@@ -1,4 +1,4 @@
-import { NavItemStyle } from "./Nav.styled";
+import { NavItemStyle } from "./Nav.style";
 
 function NavItem({ text, type }) {
   // const {getCars}

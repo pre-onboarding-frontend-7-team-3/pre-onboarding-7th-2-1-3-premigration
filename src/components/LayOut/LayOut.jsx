@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { LayOutHeader } from "./LayOut.styled";
+import { LayOutHeader } from "./LayOut.style";
 
 function LayOut({ children }) {
   return (

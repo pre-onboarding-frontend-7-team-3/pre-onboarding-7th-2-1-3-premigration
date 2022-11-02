@@ -1,4 +1,4 @@
-import { NavWrapper } from "./Nav.styled";
+import { NavWrapper } from "./Nav.style";
 import { NavData } from "./NavData";
 import NavItem from "./NavItem";
 
