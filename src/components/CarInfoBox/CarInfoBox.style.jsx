@@ -58,7 +58,7 @@ export const SubInfo = styled.div`
 export const ImageWrapper = styled.div`
   position: relative;
   display: flex;
-  margin-right: 0vw;
+  margin-right: -3vw;
 
   width: 40vw;
   height: 15vh;
