@@ -11,7 +11,7 @@ const state = {
 export const CarContext = createContext("");
 
 export default function CarContextWrapper({ children }) {
-  const [carList, dispatch] = useReducer(carReducer, state);
+  const [carState, dispatch] = useReducer(carReducer, state);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -19,7 +19,7 @@ export default function CarContextWrapper({ children }) {
     setIsLoading(true);
     getCars(params)
       .then((res) => {
-        dispatch({ type: "INIT", cars: res });
+        dispatch({ type: "GET", cars: res });
         setIsLoading(false);
       })
       .catch((error) => {
@@ -30,7 +30,7 @@ export default function CarContextWrapper({ children }) {
   useEffect(getCarsHandler, []);
 
   return (
-    <CarContext.Provider value={{ carList, isLoading, errorMessage, getCars: getCarsHandler }}>
+    <CarContext.Provider value={{ carState, isLoading, errorMessage, getCars: getCarsHandler }}>
       {children}
     </CarContext.Provider>
   );
