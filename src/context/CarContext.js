@@ -27,6 +27,10 @@ export default function CarContextWrapper({ children }) {
       });
   }, []);
 
+  const setSelectedCar = useCallback((id = 0) => {
+    dispatch({ type: "SET_SELECTED_CAR", id });
+  });
+
   useEffect(getCarsHandler, []);
 
   return (
