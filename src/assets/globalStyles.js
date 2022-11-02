@@ -18,7 +18,7 @@ const globalStyles = css`
     padding: 0;
   }
 
-  .App {
+  #root {
     min-width: 360px;
     width: 450px;
     height: 100%;
