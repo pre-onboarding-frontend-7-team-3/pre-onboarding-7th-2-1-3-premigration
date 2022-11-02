@@ -1,4 +1,4 @@
-import LayOut from "components/LayOut/LayOut";
+import LayOut from "components/LayOut";
 import CarContextWrapper from "context/CarContext";
 import { Home, Detail } from "pages";
 import { Route, Routes } from "react-router-dom";
