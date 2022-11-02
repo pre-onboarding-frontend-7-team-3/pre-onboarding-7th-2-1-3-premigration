@@ -2,6 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
+html, body {
+  scrollbar-width: none; /* For Firefox */
+}
 body {
 	margin: 0;
 	padding: 0;
