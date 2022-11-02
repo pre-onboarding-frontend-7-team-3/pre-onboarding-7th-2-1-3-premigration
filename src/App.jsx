@@ -1,8 +1,14 @@
+import React from "react";
+
+import RouteComponent from "./routes";
+
 function App() {
   return (
-    <div className="App">
+    <main>
       <header className="App-header"></header>
-    </div>
+
+      <RouteComponent />
+    </main>
   );
 }
 
