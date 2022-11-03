@@ -55,78 +55,15 @@ $ npm start
 - 본 프로젝트에서 상태 관리 라이브러리의 제한은 없었으나 내장 API를 사용해서 구현하자는 공통된 의견이 있어 useReducer와 useContext 훅을 채택했습니다. 컴포넌트 단에서 여러 상태를 만들기 보다 컨포넌트 간 상태 공유가 가능하고 비동기 요청에 대한 과정과 결과 상태를 한 영역에서 관리할 수 있는 장점에 의견을 모았습니다. 더 작은 영역에서 확실한 책임을 지도록 커스텀 reducer와 context prodiver 컴포넌트로 로직을 분리해서 관리했습니다.
 > 참고 폴더 [src/context](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/context)
 >
-> 참고 파일 [useCarReducer.js](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/helpers/useCarReducer.js)
+
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/edbcce232e4fa90438532c6ff59a991e1c6a74ab/src/helpers/useCarReducer.js#L1-L16
 
 <br/>
 
 ### 3. Context API를 활용한 UI에 대한 정보와 데이터 
-  - 팀원들과 모바일 환경에서 원활한 사용자 경험에 대한 의견을 공유한 결과 차량 상세 페이지에서 뒤로가기를 눌렀을 때 직전에 선택한 카테고리, 스크롤 위치 및 데이터가 출력되게 구현 했습니다. 초기에는 기능 별로 사용될 상태를 컴포넌트 단에서 선언하고 관리했으나 context API를 채택해서 선택된 카테고리 상태, 네비게이션 ref에 대한 스크롤 위치 정보 및 차량 목록에 대한 데이터를 관리했습니다.
+  - 팀원들과 모바일 환경에서 원활한 사용자 경험에 대한 의견을 공유한 결과 차량 상세 페이지에서 뒤로 가기를 눌렀을 때 직전에 선택한 카테고리, 스크롤 위치 및 데이터가 출력되게 구현했습니다. 초기에는 기능 별로 사용될 상태를 컴포넌트 단에서 선언하고 관리했으나 context API를 채택해서 선택된 카테고리 상태, 네비게이션 ref에 대한 스크롤 위치 정보 및 차량 목록에 대한 데이터를 관리했습니다.
 
-```javascript
-// NavContext.js
-
-export const NavContext = createContext("");
-
-const NavContextWrapper = ({ children }) => {
-  const [navScrollXIdx, setNavScrollXIdx] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState(0);
-  const value = useMemo(
-    () => ({ navScrollXIdx, setNavScrollXIdx, selectedCategory, setSelectedCategory }),
-    [navScrollXIdx, selectedCategory],
-  );
-
-  return <NavContext.Provider value={value}>{children}</NavContext.Provider>;
-};
-
-export default NavContextWrapper;
-
-export const useNavContext = () => {
-  const state = useContext(NavContext);
-  if (!state) {
-    throw new Error("Error finding NavContext");
-  }
-  return state;
-};
-```
-
-```javascript
-// Nav.jsx
-
-const  Nav = () => {
-  const navWrapperRef = useRef(null);
-  const [navItemWidth, setNavItemWidth] = useState(0);
-  const { navScrollXIdx, setNavScrollXIdx, selectedCategory, setSelectedCategory } =
-    useNavContext();
-
-  useEffect(() => {
-    navWrapperRef.current.scrollTo(navItemWidth * navScrollXIdx, 0);
-  }, [navWrapperRef, navItemWidth]);
-
-  useEffect(() => {
-    const navItemWidth = navWrapperRef.current.firstChild.clientWidth;
-    setNavItemWidth(navItemWidth);
-  }, [navWrapperRef]);
-
-  return (
-    <NavWrapper ref={navWrapperRef}>
-      {NAV_ITEM_DATA.map(({ text, segment, fuelType }, idx) => {
-        return (
-          <NavItem
-            key={idx}
-            text={text}
-            segment={segment}
-            fuelType={fuelType}
-            idx={idx}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-            setNavScrollXIdx={setNavScrollXIdx}
-          />
-        );
-      })}
-    </NavWrapper>
-  );
-}
-```
+https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/b084a35634c7679f0693aa6a451444e47d1cf427/src/context/NavContext.js#L1-L24
 
 <br/>
 
@@ -216,28 +153,15 @@ export default MyApp;
 ### 6. 반응형 모바일 웹
 - 모바일 디바이스의 크기(450px~360px)에 따라 UI가 출력되도록 구현하고자 react-responsive 라이브러리를 사용했습니다. 개발 기간이 길지 않아 개발 생태계가 잘 형성돼있고 어려움 없이 도입할 수 있다는 이유를 근거로 채택했습니다.
 
-```jsx
-import { useMediaQuery } from "react-responsive";
-
-const App = () => {
-  const Desktop = ({ children }) => {
-    const isDesktop = useMediaQuery({ minWidth: 451 });
-    return isDesktop ? children : null;
-  };
-
-  const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ maxWidth: 450 });
-    return isMobile ? children : null;
-  };
-  /* ... */
-};
-```
+  https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/b084a35634c7679f0693aa6a451444e47d1cf427/src/App.jsx#L1-L35
 
 <br/>
 
 ### 7. 상수 데이터의 활용
-  - live share 중 UI 구성에 필요한 정적인 데이터가 하드 코딩 돼있어 가독성이 떨어진다는 의견을 공유했습니다. 반복문을 통해서 코드를 간결하게 정리할 수 있는 데이터는 상수화 처리를 했고 재상용성과 추후 유지보수를 고려해서 [/constants](url) 디렉토리에서 모두 관리 했습니다.
-  > 참고 폴더[/ constants](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/constants/)
+  - live share 중 UI 구성에 필요한 정적인 데이터가 하드 코딩 돼있어 가독성이 떨어진다는 의견을 공유했습니다. 반복문을 통해서 코드를 간결하게 정리할 수 있는 데이터는 상수화 처리를 했고 재상용성과 추후 유지보수를 고려해서 [/constants](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/tree/b084a35634c7679f0693aa6a451444e47d1cf427/src/constants) 디렉토리에서 모두 관리 했습니다.
+  
+  https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/472394ea9883a7f3ed198bbb9e12c7c57fa3f6e9/src/components/CarDetail/CarDetail.jsx#L1-L49
+  
 </br>
 
 ## 🔒 팀 코드 컨벤션
