@@ -1,4 +1,3 @@
-import LayOut from "components/LayOut";
 import CarContextWrapper from "context/CarContext";
 import NavContextWrapper from "context/NavContext";
 import { useMediaQuery } from "react-responsive";
@@ -23,10 +22,8 @@ function App() {
         </Desktop>
         <Mobile>
           <Routes>
-            <Route element={<LayOut />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/detail/:id" element={<Detail />} />
-            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/detail/:id" element={<Detail />} />
           </Routes>
         </Mobile>
       </NavContextWrapper>
