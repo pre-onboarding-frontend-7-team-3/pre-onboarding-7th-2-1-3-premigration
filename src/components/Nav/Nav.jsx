@@ -1,7 +1,7 @@
 import { NavContext } from "context/NavContext";
 import { useContext, useEffect, useRef, useState } from "react";
 import { NavWrapper } from "./Nav.style";
-import { NAV_ITEM_DATA } from "./NavData";
+import { NAV_ITEM_DATA } from "../../constants/NavData";
 import NavItem from "./NavItem";
 
 function Nav() {

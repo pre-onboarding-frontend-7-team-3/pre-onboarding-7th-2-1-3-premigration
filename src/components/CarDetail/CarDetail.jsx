@@ -1,5 +1,5 @@
 import * as S from "./CarDetail.style";
-import { CAR_DETAIL_CATEGORY, CAR_DETAIL_INFO } from "./CarDetailData";
+import { CAR_DETAIL_CATEGORY, CAR_DETAIL_INFO } from "../../constants/CarDetailData";
 import CarDetailItem from "./CarDetailItem";
 import formatAttribute from "utils/formatAttribute";
 

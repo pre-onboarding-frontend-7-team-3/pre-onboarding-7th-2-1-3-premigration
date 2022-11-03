@@ -38,8 +38,6 @@ export const TextWrapper = styled.div`
 
   width: 170px;
 
-  /* width:100%; */
-  /* padding: 5px; */
   gap: 6px;
 `;
 
@@ -68,7 +66,6 @@ export const SubAttribute = styled.div`
 export const ImageWrapper = styled.div`
   position: relative;
   display: flex;
-  /* margin-right: -3vw; */
 
   width: 40vw;
   height: 100%;
