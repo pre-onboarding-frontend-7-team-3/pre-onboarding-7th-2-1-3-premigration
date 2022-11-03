@@ -1,28 +1,28 @@
 import Button from "../common/Button";
-import * as Style from "./CarInfoBox.style";
+import * as S from "./CarInfoBox.style";
 import { Link } from "react-router-dom";
 import formatAttribute from "utils/formatAttribute";
 
 function CarInfoBox({ attribute: { brand, name, segment, fuelType, imageUrl }, amount, id }) {
   console.log(imageUrl);
   return (
-    <Style.Wrapper>
+    <S.Wrapper>
       <Link to={`/detail/${id}`}>
-        <Style.InnerWrapper>
-          <Style.AttributeWrapper>
-            <Style.TextWrapper>
-              <Style.MainAttribute>{brand}</Style.MainAttribute>
-              <Style.MainAttribute>{name}</Style.MainAttribute>
-            </Style.TextWrapper>
-            <Style.TextWrapper>
-              <Style.SubAttribute>
+        <S.InnerWrapper>
+          <S.AttributeWrapper>
+            <S.TextWrapper>
+              <S.MainAttribute>{brand}</S.MainAttribute>
+              <S.MainAttribute>{name}</S.MainAttribute>
+            </S.TextWrapper>
+            <S.TextWrapper>
+              <S.SubAttribute>
                 {formatAttribute(segment)} / {formatAttribute(fuelType)}
-              </Style.SubAttribute>
-              <Style.SubAttribute>월 {amount.toLocaleString("ko-KR")} 원 부터</Style.SubAttribute>
-            </Style.TextWrapper>
-          </Style.AttributeWrapper>
-          <Style.ImageWrapper>
-            <Style.ButtonWrapper>
+              </S.SubAttribute>
+              <S.SubAttribute>월 {amount.toLocaleString("ko-KR")} 원 부터</S.SubAttribute>
+            </S.TextWrapper>
+          </S.AttributeWrapper>
+          <S.ImageWrapper>
+            <S.ButtonWrapper>
               <Button
                 width="52px"
                 height="22px"
@@ -34,12 +34,12 @@ function CarInfoBox({ attribute: { brand, name, segment, fuelType, imageUrl }, a
               >
                 신규
               </Button>
-            </Style.ButtonWrapper>
+            </S.ButtonWrapper>
             
-          </Style.ImageWrapper>
-        </Style.InnerWrapper>
+          </S.ImageWrapper>
+        </S.InnerWrapper>
       </Link>
-    </Style.Wrapper>
+    </S.Wrapper>
   );
 }
 

@@ -26,7 +26,6 @@ export const OverviewWrapper = styled.div`
   height: 90px;
 
   padding: 10px 0;
-
 `;
 
 export const OverviewStart = styled.div``;

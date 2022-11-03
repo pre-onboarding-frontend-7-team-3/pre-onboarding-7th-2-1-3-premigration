@@ -9,8 +9,6 @@ export const Wrapper = styled.article`
   max-width: 450px;
   height: 120px;
 
-  /* padding: 0 17px; */
-
   border-bottom: 1px solid black;
   background-color: ${(props) => props.theme.WHITE};
 `;
@@ -38,8 +36,6 @@ export const TextWrapper = styled.div`
 
   min-width: 190px;
 
-  /* width:100%; */
-  /* padding: 5px; */
   gap: 6px;
 `;
 
@@ -68,7 +64,6 @@ export const SubAttribute = styled.div`
 export const ImageWrapper = styled.div`
   position: relative;
   display: flex;
-  /* margin-right: -3vw; */
 
   width: 40vw;
   height: 11vh;
