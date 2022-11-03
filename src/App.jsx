@@ -6,9 +6,9 @@ import { Home, Detail } from "pages";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const isDesktop = useMediaQuery({ minWidth: 451 });
+  const isMobile = useMediaQuery({ maxWidth: 450, minWidth: 350 });
 
-  if (isDesktop) {
+  if (!isMobile) {
     return <h1>화면을 줄여 이용해주세요</h1>;
   }
 
