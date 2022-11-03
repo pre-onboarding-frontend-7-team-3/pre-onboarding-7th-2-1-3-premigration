@@ -1,13 +1,14 @@
 import CarInfoBox from "components/CarListItem";
+import NoData from "components/common/NoData/NoData";
 
 import { CarListWrapper } from "./CarList.style";
 
-const CarList = ({ carList }) => {
+const  CarList = ({ carList }) => {
   return (
     <CarListWrapper>
-      {carList.length > 0 ? carList.map((car) => <CarInfoBox key={car.id} {...car} />) : null}
+      {carList.length > 0 ? carList.map((car) => <CarInfoBox key={car.id} {...car} />) : <NoData />}
     </CarListWrapper>
   );
-};
+}
 
 export default CarList;
