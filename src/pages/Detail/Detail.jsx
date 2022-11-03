@@ -9,17 +9,17 @@ function Detail() {
   const {
     carState: { carList, selectedCar },
     findCars,
-    isLoading,
   } = useContext(CarContext);
 
   useEffect(() => {
     findCars(id);
   }, [carList]);
+
   console.log(selectedCar);
   return (
     <section>
       <Header title="차량상세" />
-      {selectedCar?.length && <CarDetail selectedCar={selectedCar[0]} />}
+      {selectedCar && <CarDetail selectedCar={selectedCar} />}
     </section>
   );
 }
