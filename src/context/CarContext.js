@@ -1,4 +1,4 @@
-import { createContext, useState, useReducer, useEffect, useCallback } from "react";
+import { createContext, useState, useReducer, useEffect, useCallback, useMemo } from "react";
 import { getCars } from "apis";
 
 import { carReducer } from "helpers/useCarReducer";
@@ -27,23 +27,21 @@ export default function CarContextWrapper({ children }) {
       });
   }, []);
 
-  const findCarsHandler = (id) => {
+  const findCarsHandler = useCallback((id) => {
     dispatch({ type: "FIND", id });
-  };
+  }, []);
+
+  const contextValue = useMemo(() => {
+    return {
+      carState,
+      isLoading,
+      errorMessage,
+      getCars: getCarsHandler,
+      findCars: findCarsHandler,
+    };
+  }, [carState, isLoading, errorMessage]);
 
   useEffect(getCarsHandler, []);
 
-  return (
-    <CarContext.Provider
-      value={{
-        carState,
-        isLoading,
-        errorMessage,
-        getCars: getCarsHandler,
-        findCars: findCarsHandler,
-      }}
-    >
-      {children}
-    </CarContext.Provider>
-  );
+  return <CarContext.Provider value={contextValue}>{children}</CarContext.Provider>;
 }
