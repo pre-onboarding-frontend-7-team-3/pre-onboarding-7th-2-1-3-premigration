@@ -16,7 +16,6 @@ function Detail() {
     findCar(id);
   }, [carList]);
 
-  console.log(selectedCar);
   return (
     <section>
       <Header title={HEADER_DATA.CAR_DETAIL} redirect />

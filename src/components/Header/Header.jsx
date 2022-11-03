@@ -5,7 +5,7 @@ function Header({ title, redirect }) {
   return (
     <HeaderStyle>
       {redirect && <BackButton />}
-      {title}
+      <span>{title}</span>
     </HeaderStyle>
   );
 }
