@@ -1,7 +1,3 @@
-import { useContext } from "react";
-
-import { CarContext } from "context/CarContext";
-
 import CarList from "components/CarList";
 import Nav from "components/Nav";
 import { useCarState } from "../../context/CarContext";
@@ -15,7 +11,7 @@ function Home() {
   return (
     <section>
       <Nav />
-      {loading ? <p>loading...</p> : <CarList carList={carList} />}
+      {loading ? <Loading /> : <CarList carList={carList} />}
     </section>
   );
 }

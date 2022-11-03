@@ -6,8 +6,6 @@ import Button from "../common/Button";
 
 import { NavItemStyle } from "./Nav.style";
 
-import Button from "../common/Button";
-
 function NavItem({ text, type }) {
   const { getCars } = useCarState();
 
