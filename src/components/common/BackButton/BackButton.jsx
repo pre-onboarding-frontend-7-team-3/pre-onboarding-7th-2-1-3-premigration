@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Icon from "../Icons/Icon";
+import Icon from "../Icon";
 import { BackButtonWrapper } from "./BackButton.style";
 
 function BackButton() {
