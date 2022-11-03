@@ -34,77 +34,98 @@ $ npm start
 
 ## ☑️ Best Practice 및 채택 근거
 
-1. 컴포넌트의 재사용성 높이기
+### 1. 컴포넌트의 재사용성 높이기
+> src/component/common/
     
-    > src/component/common/
-    > 
-    - 재사용이 가능한 공통 컴포넌트들을 분리하여 목적에 맞게 확장하여 사용할 수 있도록 하여 재사용성을 높였습니다.
-2. 개발 효율성과 생산성 향상
-    - barrel방식으로 폴더 구조를 구성하여 파일이름의 가독성 높이기
-    - baseUrl을 지정하여 import시 경로의 가독성 높이기
-3. 관련 state을 한 곳에 모아 응집도 높이기 
-    - 서버에서 요청받은 데이터, 로딩, 에러의 정보를 `CarContext` 한 곳에 관리하도록 하여 상태흐름 파악이 용이하도록 했습니다.
+- 재사용이 가능한 공통 컴포넌트들을 분리하여 목적에 맞게 확장하여 사용할 수 있도록 하여 재사용성을 높였습니다.
+
+### 2. 개발 효율성과 생산성 향상
+
+- barrel방식으로 폴더 구조를 구성하여 파일이름의 가독성 높이기
+- baseUrl을 지정하여 import시 경로의 가독성 높이기
+
+### 3. 관련 state을 한 곳에 모아 응집도 높이기 
+
+- 서버에서 요청받은 데이터, 로딩, 에러의 정보를 `CarContext` 한 곳에 관리하도록 하여 상태흐름 파악이 용이하도록 했습니다.
     
-    ```jsx
-    // CarContext.js
-    import { createContext, useReducer, useEffect, useCallback, useContext } from "react";
-    import { getCars } from "apis";
-    import { CAR_ACTION_TYPES, carReducer } from "helpers/useCarReducer";
+```jsx
+import { createContext, useReducer, useEffect, useCallback, useContext } from "react";
+import { getCars } from "apis";
+import { carReducer } from "helpers/useCarReducer";
+import { CAR_ACTION_TYPES } from "constants/actionType";
+
+const state = {
+  carList: [],
+  loading: false,
+  error: null,
+  selectedCar: null,
+};
+
+export const CarContext = createContext("");
+
+export default function CarContextWrapper({ children }) {
+  const [carState, dispatch] = useReducer(carReducer, state);
+
+  const getCarsHandler = useCallback((params = {}) => {
+    dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_LOADING });
+    getCars(params)
+      .then((res) => {
+        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_SUCCESS, cars: res });
+      })
+      .catch((error) => {
+        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_ERROR });
+        throw new Error(error);
+      });
+  }, []);
+
+  const findCarsHandler = (id) => {
+    dispatch({ type: CAR_ACTION_TYPES.FIND_CAR_DETAIL, id });
+  };
+
+  useEffect(getCarsHandler, []);
+
+  return (
+    <CarContext.Provider value={{ carState, getCars: getCarsHandler, findCars: findCarsHandler }}>
+      {children}
+    </CarContext.Provider>
+  );
+}
+
+export const useCarState = () => {
+  const state = useContext(CarContext);
+  if (!state) {
+    throw new Error("Error finding CarContext Provider");
+  }
+  return state;
+};
+
+```
+
+### 4. 반응형, 모바일 웹
+
+- react-responsive라이브러리를 사용하여 모바일(450px ~ 360px)에 최적화된 UI를 구현했습니다.
     
-    const state = {
-      carList: [],
-      loading: false,
-      error: null,
-      selectedCar: null,
-    };
+```jsx
+import { useMediaQuery } from "react-responsive";
     
-    export const CarContext = createContext("");
+function App() {
+  const Desktop = ({ children }) => {
+    const isDesktop = useMediaQuery({ minWidth: 451 });
+    return isDesktop ? children : null;
+  };
     
-    export default function CarContextWrapper({ children }) {
-      const [carState, dispatch] = useReducer(carReducer, state);
-    
-      const getCarsHandler = useCallback((params = {}) => {
-        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_LOADING });
-        getCars(params)
-          .then((res) => {
-            dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_SUCCESS, cars: res });
-          })
-          .catch((error) => {
-            dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_ERROR });
-            throw new Error(error);
-          });
-      }, []);
-    
-      useEffect(getCarsHandler, []);
-    
-      return (
-        <CarContext.Provider value={{ carState, getCars: getCarsHandler }}>
-          {children}
-        </CarContext.Provider>
-      );
-    }
-    ```
-    
-4. 반응형, 모바일 웹
-    - react-responsive라이브러리를 사용하여 모바일(450px ~ 360px)에 최적화된 UI를 구현했습니다.
-    
-    ```jsx
-    import { useMediaQuery } from "react-responsive";
-    
-    function App() {
-      const Desktop = ({ children }) => {
-        const isDesktop = useMediaQuery({ minWidth: 451 });
-        return isDesktop ? children : null;
-      };
-    
-      const Mobile = ({ children }) => {
-        const isMobile = useMediaQuery({ maxWidth: 450 });
-        return isMobile ? children : null;
-      };
+  const Mobile = ({ children }) => {
+    const isMobile = useMediaQuery({ maxWidth: 450 });
+    return isMobile ? children : null;
+  };
     	/* ... */
-    }
-    ```
-    
+}
+```
+
+### 5. 상세페이지에서 뒤로가기 버튼으로 이전페이지로 왔을 때에도 토글된 navItem이 유지되도록 하기
+
+- 이전페이지로 돌아왔을 때에 토글된 navItem이 유지되는 것이 더 좋은 사용자 경험을 제공한다고 판단했습니다.
+- `navContext`를 이용하여 토글된 navItem의 정보를 관리하여, 토글된 navItem이 유지되도록 구현했습니다.
 
 </br>
 
