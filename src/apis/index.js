@@ -5,7 +5,7 @@ const instance = axios.create({
   timeout: 2000,
 });
 
-export const getCars = async (queryParams = {}) => {
+export const getCarAPI = async (queryParams = {}) => {
   instance.defaults.params = queryParams;
   const res = await instance.get("/cars");
 

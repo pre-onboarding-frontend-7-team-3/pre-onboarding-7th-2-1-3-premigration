@@ -1,4 +1,4 @@
-import CarInfoBox from "components/CarInfoBox";
+import CarInfoBox from "components/CarListItem";
 import NoData from "components/common/NoData";
 
 import { CarListWrapper } from "./CarList.style";

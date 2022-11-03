@@ -2,7 +2,6 @@ import * as S from "./CarDetail.style";
 import { formatDate } from "utils/formatDate";
 
 const CarDetailItem = ({ name, description, date, amount }) => {
-  console.log(date&&date)
   return (
     <S.TextWrapper>
       <S.AttributeSubCategory>{name}</S.AttributeSubCategory>
