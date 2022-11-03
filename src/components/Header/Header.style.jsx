@@ -4,12 +4,11 @@ const HeaderStyle = styled.header`
   position: relative;
   display: flex;
   align-items: center;
-  color: blueviolet;
+  color: #000000;
   justify-content: center;
   align-items: center;
 
   width: 100%;
-  /* max-width: 450px; */
   height: 3rem;
 
   border-bottom: 1px solid black;
