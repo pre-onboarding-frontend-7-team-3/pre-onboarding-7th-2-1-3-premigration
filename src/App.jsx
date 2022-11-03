@@ -2,7 +2,7 @@ import LayOut from "components/LayOut";
 import CarContextWrapper from "context/CarContext";
 import { useMediaQuery } from "react-responsive";
 import { Home, Detail } from "pages";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const Desktop = ({ children }) => {
