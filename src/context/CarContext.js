@@ -15,23 +15,24 @@ export const CarContext = createContext("");
 export default function CarContextWrapper({ children }) {
   const [carState, dispatch] = useReducer(carReducer, state);
 
-  const getCarsHandler = useCallback((params = {}) => {
+  const getCarsHandler = useCallback(async (params) => {
     dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_LOADING });
-    getCars(params)
-      .then((res) => {
-        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_SUCCESS, cars: res });
-      })
-      .catch((error) => {
-        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_ERROR });
-        throw new Error(error);
-      });
+    try {
+      const res = await getCars(params);
+      dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_SUCCESS, cars: res });
+    } catch (error) {
+      dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_ERROR });
+      throw new Error(error);
+    }
   }, []);
 
   const findCarHandler = (id) => {
     dispatch({ type: CAR_ACTION_TYPES.FIND_CAR_DETAIL, id });
   };
 
-  useEffect(getCarsHandler, []);
+  useEffect(() => {
+    getCarsHandler();
+  }, []);
 
   return (
     <CarContext.Provider value={{ carState, getCars: getCarsHandler, findCar: findCarHandler }}>

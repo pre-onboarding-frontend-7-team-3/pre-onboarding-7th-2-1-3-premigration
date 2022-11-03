@@ -19,8 +19,8 @@ function Detail() {
   console.log(selectedCar);
   return (
     <section>
-      <Header title={HEADER_DATA.CAR_DETAIL} redirect/>
-      <CarDetail selectedCar={selectedCar} />}
+      <Header title={HEADER_DATA.CAR_DETAIL} redirect />
+      <CarDetail selectedCar={selectedCar} />
     </section>
   );
 }

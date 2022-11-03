@@ -1,9 +1,9 @@
 export const formatDate = (date) => {
-  const week = ["일", "월", "화", "수", "목", "금", "토"];
   const newDate = new Date(date);
-  const day = week[newDate.getDay(date)];
-  const time = newDate.toLocaleDateString().split(".");
-  const formattedDate = `${time[1]}월 ${time[2]}일 (${day}) 부터`;
-
+  const weekday = ["일", "월", "화", "수", "목", "금", "토"];
+  const newMonth = newDate.getMonth() + 1;
+  const newDay = newDate.getDate();
+  const day = weekday[newDate.getDay()];
+  const formattedDate = `${newMonth}월 ${newDay}일 (${day}) 부터`;
   return formattedDate;
 };
