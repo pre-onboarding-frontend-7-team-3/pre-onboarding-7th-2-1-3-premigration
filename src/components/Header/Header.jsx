@@ -4,7 +4,7 @@ import { HeaderStyle } from "./Header.style";
 function Header({ title, header }) {
   return (
     <HeaderStyle>
-      <BackButton />
+      {!header && <BackButton />}
       <h3>{title}</h3>
     </HeaderStyle>
   );
