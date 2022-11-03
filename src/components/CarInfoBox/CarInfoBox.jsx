@@ -13,7 +13,7 @@ function CarInfoBox({
 }) {
   return (
     <Style.Wrapper>
-      <Link to={`/detail/${id}`} state={{ idx: "1" }}>
+      <Link to={`/detail/${id}`}>
         <Style.InnerWrapper>
           <Style.AttributeWrapper>
             <Style.TextWrapper>
@@ -28,8 +28,6 @@ function CarInfoBox({
             </Style.TextWrapper>
           </Style.AttributeWrapper>
           <Style.ImageWrapper url={imageUrl}>
-            {/* <img width="100%" alt={brand} src={imageUrl} /> */}
-
             {isNew(startDate) && (
               <Style.ButtonWrapper>
                 (

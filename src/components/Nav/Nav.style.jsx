@@ -8,7 +8,7 @@ const NavWrapper = styled.div`
   width: 92%;
   gap: 10px;
 
-  padding: 2vw 3vw;
+  padding: 2vw 4vw;
 
   border-bottom: 1px solid ${(props) => props.theme.BLACK};
 
