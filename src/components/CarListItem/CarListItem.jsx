@@ -1,4 +1,4 @@
-import * as Style from "./CarInfoBox.style";
+import * as Style from "./CarListItem.style";
 import { Link } from "react-router-dom";
 import Button from "components/common/Button";
 import isNew from "utils/isNewCar";
