@@ -1,4 +1,4 @@
-import { CarContext } from "../../context/CarContext";
+import { CarContext } from "context/CarContext";
 import { useContext } from "react";
 import { NavItemStyle, NavButton } from "./Nav.style";
 
