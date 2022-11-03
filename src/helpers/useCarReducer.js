@@ -1,4 +1,4 @@
-import { CAR_ACTION_TYPES } from "constants/actionType";
+import { CAR_ACTION_TYPES } from "constants/CarActionTypes";
 
 export const carReducer = (state, action) => {
   switch (action.type) {

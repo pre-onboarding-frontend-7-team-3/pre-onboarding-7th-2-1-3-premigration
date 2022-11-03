@@ -1,10 +1,10 @@
 import BackButton from "components/common/BackButton";
 import { HeaderStyle } from "./Header.style";
 
-function Header({ title, header }) {
+function Header({ title, redirect }) {
   return (
     <HeaderStyle>
-      {!header && <BackButton />}
+      {redirect && <BackButton />}
       {title}
     </HeaderStyle>
   );

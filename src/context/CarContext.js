@@ -1,7 +1,7 @@
 import { createContext, useReducer, useEffect, useCallback, useContext } from "react";
 import { getCars } from "apis";
 import { carReducer } from "helpers/useCarReducer";
-import { CAR_ACTION_TYPES } from "constants/actionType";
+import { CAR_ACTION_TYPES } from "constants/CarActionTypes";
 
 const state = {
   carList: [],

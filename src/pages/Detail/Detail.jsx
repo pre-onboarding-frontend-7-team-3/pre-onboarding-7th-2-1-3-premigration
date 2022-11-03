@@ -3,6 +3,7 @@ import CarDetail from "components/CarDetail";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useCarState } from "context/CarContext";
+import { HEADER_DATA } from "constants/HeaderData";
 
 function Detail() {
   const { id } = useParams();
@@ -18,8 +19,8 @@ function Detail() {
   console.log(selectedCar);
   return (
     <section>
-      <Header title="차량상세" />
-      {selectedCar && <CarDetail selectedCar={selectedCar} />}
+      <Header title={HEADER_DATA.CAR_DETAIL} redirect/>
+      <CarDetail selectedCar={selectedCar} />}
     </section>
   );
 }
