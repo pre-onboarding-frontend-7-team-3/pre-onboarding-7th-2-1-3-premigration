@@ -1,4 +1,4 @@
-import Button from "../common/Button";
+import Button from "components/common/Button/Button";
 import * as S from "./CarInfoBox.style";
 import { Link } from "react-router-dom";
 import formatAttribute from "utils/formatAttribute";
@@ -35,7 +35,6 @@ function CarInfoBox({ attribute: { brand, name, segment, fuelType, imageUrl }, a
                 신규
               </Button>
             </S.ButtonWrapper>
-            
           </S.ImageWrapper>
         </S.InnerWrapper>
       </Link>
