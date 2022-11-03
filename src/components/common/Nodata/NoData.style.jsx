@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -13,8 +12,4 @@ const Wrapper = styled.div`
   line-height: 21px;
 `;
 
-const NoData = () => {
-  return <Wrapper>차량이 없습니다.</Wrapper>;
-};
-
-export default NoData;
+export { Wrapper };

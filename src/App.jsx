@@ -1,5 +1,5 @@
-import LayOut from "components/LayOut";
 import CarContextWrapper from "context/CarContext";
+import NavContextWrapper from "context/NavContext";
 import { useMediaQuery } from "react-responsive";
 import { Home, Detail } from "pages";
 import { Route, Routes } from "react-router-dom";
@@ -11,27 +11,22 @@ function App() {
   };
 
   const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ maxWidth: 450 });
+    const isMobile = useMediaQuery({ maxWidth: 450, minWidth: 350 });
     return isMobile ? children : null;
   };
   return (
     <CarContextWrapper>
-      <Desktop>
-        <h1>화면을 줄여 이용해주세요</h1>
-      </Desktop>
-      <Mobile>
+      <NavContextWrapper>
         <Desktop>
           <h1>화면을 줄여 이용해주세요</h1>
         </Desktop>
         <Mobile>
           <Routes>
-            <Route element={<LayOut />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/detail:id" element={<Detail />} />
-            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/detail/:id" element={<Detail />} />
           </Routes>
         </Mobile>
-      </Mobile>
+      </NavContextWrapper>
     </CarContextWrapper>
   );
 }

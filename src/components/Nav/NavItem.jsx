@@ -1,23 +1,28 @@
-import { useCarState } from "../../context/CarContext";
+import { CarContext } from "../../context/CarContext";
 import { useContext } from "react";
-import { CarContext } from "context/CarContext";
+import { NavItemStyle, NavButton } from "./Nav.style";
 
-import Button from "../common/Button";
-
-import { NavItemStyle } from "./Nav.style";
-
-function NavItem({ text, type }) {
-  const { getCars } = useCarState();
+function NavItem({
+  text,
+  segment,
+  fuelType,
+  idx,
+  selectedCategory,
+  setSelectedCategory,
+  setNavScrollXIdx,
+}) {
+  const { getCars } = useContext(CarContext);
 
   const handleNavBox = () => {
-    getCars({ segment: type });
-    console.log("nav type", type);
+    getCars({ fuelType, segment });
+    setSelectedCategory(idx);
+    setNavScrollXIdx(idx);
   };
   return (
     <NavItemStyle>
-      <Button borderRadius="62px" onClick={handleNavBox}>
+      <NavButton onClick={handleNavBox} idx={idx} selectedCategory={selectedCategory}>
         {text}
-      </Button>
+      </NavButton>
     </NavItemStyle>
   );
 }

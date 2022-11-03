@@ -1,10 +1,4 @@
-export const CAR_ACTION_TYPES = {
-  GET_CAR_LIST_SUCCESS: "GET_CAR_LIST_SUCCESS",
-  GET_CAR_LIST_LOADING: "GET_CAR_LIST_LOADING",
-  GET_CAR_LIST_ERROR: "GET_CAR_LIST_ERROR",
-
-  FIND_CAR_DETAIL: "FIND_CAR_DETAIL",
-};
+import { CAR_ACTION_TYPES } from "constants/actionType";
 
 export const carReducer = (state, action) => {
   switch (action.type) {
@@ -15,7 +9,7 @@ export const carReducer = (state, action) => {
     case CAR_ACTION_TYPES.GET_CAR_LIST_ERROR:
       return { ...state, loading: false, error: true };
     case CAR_ACTION_TYPES.FIND_CAR_DETAIL:
-      break;
+      return { ...state, selectedCar: state.carList.find((car) => car.id === parseInt(action.id)) };
     default:
       throw new Error("Error in action type");
   }

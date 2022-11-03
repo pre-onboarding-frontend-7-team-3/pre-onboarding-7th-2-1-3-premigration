@@ -1,6 +1,7 @@
 import { createContext, useReducer, useEffect, useCallback, useContext } from "react";
 import { getCars } from "apis";
-import { CAR_ACTION_TYPES, carReducer } from "helpers/useCarReducer";
+import { carReducer } from "helpers/useCarReducer";
+import { CAR_ACTION_TYPES } from "constants/actionType";
 
 const state = {
   carList: [],
@@ -26,10 +27,14 @@ export default function CarContextWrapper({ children }) {
       });
   }, []);
 
+  const findCarsHandler = (id) => {
+    dispatch({ type: CAR_ACTION_TYPES.FIND_CAR_DETAIL, id });
+  };
+
   useEffect(getCarsHandler, []);
 
   return (
-    <CarContext.Provider value={{ carState, getCars: getCarsHandler }}>
+    <CarContext.Provider value={{ carState, getCars: getCarsHandler, findCars: findCarsHandler }}>
       {children}
     </CarContext.Provider>
   );
