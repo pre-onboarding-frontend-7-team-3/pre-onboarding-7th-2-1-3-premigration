@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { css } from "styled-components";
 
 const NavWrapper = styled.div`
   display: flex;
@@ -24,8 +25,28 @@ const NavItemStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
+  white-space: nowrap;
+`;
+
+const NavButton = styled.button`
+  width: 100%;
+  height: 27px;
+
+  padding: 5px 18px;
+
+  border-radius: 62px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  ${({ theme, selectedCategory, idx }) =>
+    css`
+      background-color: ${idx === selectedCategory ? theme.BLACK : theme.GRAY};
+      color: ${idx === selectedCategory ? theme.WHITE : theme.BLACK};
+    `}
 
   cursor: pointer;
 `;
 
-export { NavWrapper, NavItemStyle };
+export { NavWrapper, NavItemStyle, NavButton };

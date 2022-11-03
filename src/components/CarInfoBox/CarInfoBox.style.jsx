@@ -23,19 +23,27 @@ export const InnerWrapper = styled.div`
   width: 100%;
 `;
 
+export const AttributeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+`;
+
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  width: 120px;
+  width: 170px;
 
+  /* width:100%; */
   /* padding: 5px; */
-  gap: 8px;
+  gap: 6px;
 `;
 
-export const MainInfo = styled.div`
+export const MainAttribute = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -46,7 +54,7 @@ export const MainInfo = styled.div`
   font-weight: 700;
 `;
 
-export const SubInfo = styled.div`
+export const SubAttribute = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -60,16 +68,18 @@ export const SubInfo = styled.div`
 export const ImageWrapper = styled.div`
   position: relative;
   display: flex;
-  margin-right: -3vw;
+  /* margin-right: -3vw; */
 
-  width: 172px;
-  height: 100px;
-
-  background-color: ${(props) => props.theme.GRAY};
+  width: 40vw;
+  height: 100%;
+  height: 11vh;
+  background-image: ${(props) => `url(${props.url})`};
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export const ButtonWrapper = styled.div`
   position: absolute;
-  right: 4%;
-  top: 4%;
+  right: -10%;
+  top: -12%;
 `;

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -13,8 +12,4 @@ const Wrapper = styled.div`
   line-height: 21px;
 `;
 
-const Loading = () => {
-  return <Wrapper>불러오는 중</Wrapper>;
-};
-
-export default Loading;
+export { Wrapper };
