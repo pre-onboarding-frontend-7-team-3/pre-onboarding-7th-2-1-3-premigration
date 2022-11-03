@@ -4,7 +4,7 @@ export const NavContext = createContext("");
 
 function NavContextWrapper({ children }) {
   const [navScrollXIdx, setNavScrollXIdx] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState(0);
   const value = useMemo(
     () => ({ navScrollXIdx, setNavScrollXIdx, selectedCategory, setSelectedCategory }),
     [navScrollXIdx, selectedCategory],
