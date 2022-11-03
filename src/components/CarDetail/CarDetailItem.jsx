@@ -1,7 +1,6 @@
 import * as S from "./CarDetail.style";
 
 const CarDetailItem = ({ name, description, date, amount }) => {
-  console.log(amount)
   return (
     <S.TextWrapper>
       <S.AttributeSubCategory>{name}</S.AttributeSubCategory>
