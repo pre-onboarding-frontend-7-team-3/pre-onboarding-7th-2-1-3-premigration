@@ -5,14 +5,12 @@ export const Wrapper = styled.article`
   justify-content: center;
   align-items: center;
 
-  width: 98%;
+  width: 100%;
   max-width: 450px;
   height: 120px;
 
   border-bottom: 1px solid black;
   background-color: ${(props) => props.theme.WHITE};
-
-  cursor: pointer;
 `;
 
 export const InnerWrapper = styled.div`
@@ -36,10 +34,8 @@ export const TextWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 170px;
+  min-width: 190px;
 
-  /* width:100%; */
-  /* padding: 5px; */
   gap: 6px;
 `;
 
@@ -68,11 +64,10 @@ export const SubAttribute = styled.div`
 export const ImageWrapper = styled.div`
   position: relative;
   display: flex;
-  /* margin-right: -3vw; */
 
   width: 40vw;
-  height: 100%;
   height: 11vh;
+  
   background-image: ${(props) => `url(${props.url})`};
   background-repeat: no-repeat;
   background-size: cover;
@@ -81,5 +76,5 @@ export const ImageWrapper = styled.div`
 export const ButtonWrapper = styled.div`
   position: absolute;
   right: -10%;
-  top: -12%;
+  top: -4%;
 `;

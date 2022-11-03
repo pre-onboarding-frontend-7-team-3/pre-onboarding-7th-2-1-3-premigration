@@ -1,16 +1,16 @@
 import * as Style from "./CarInfoBox.style";
 import { Link } from "react-router-dom";
 import Button from "components/common/Button";
-import isNew from "utils/isNew";
+import isNew from "utils/isNewCar";
 import { memo } from "react";
-import { carInfoConverter } from "utils/carInfoConverter";
+import formatAttribute from "utils/formatAttribute";
 
-function CarInfoBox({
+const CarInfoBox = ({
   attribute: { brand, name, fuelType, segment, imageUrl },
   amount,
   id,
   createdAt,
-}) {
+}) => {
   return (
     <Style.Wrapper>
       <Link to={`/detail/${id}`}>
@@ -22,7 +22,7 @@ function CarInfoBox({
             </Style.TextWrapper>
             <Style.TextWrapper>
               <Style.SubAttribute>
-                {carInfoConverter[fuelType]} / {carInfoConverter[segment]}
+                {formatAttribute(fuelType)} / {formatAttribute(segment)}
               </Style.SubAttribute>
               <Style.SubAttribute>월 {amount.toLocaleString()}원 부터</Style.SubAttribute>
             </Style.TextWrapper>
@@ -48,6 +48,6 @@ function CarInfoBox({
       </Link>
     </Style.Wrapper>
   );
-}
+};
 
 export default memo(CarInfoBox);

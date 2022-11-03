@@ -1,10 +1,10 @@
-import CarContextWrapper from "context/CarContext";
+import { CarContextWrapper } from "context/CarContext";
 import NavContextWrapper from "context/NavContext";
 import { useMediaQuery } from "react-responsive";
 import { Home, Detail, Error } from "pages";
 import { Route, Routes } from "react-router-dom";
 
-function App() {
+const App = () => {
   const Desktop = ({ children }) => {
     const isDesktop = useMediaQuery({ minWidth: 451 });
     return isDesktop ? children : null;
@@ -30,6 +30,6 @@ function App() {
       </NavContextWrapper>
     </CarContextWrapper>
   );
-}
+};
 
 export default App;

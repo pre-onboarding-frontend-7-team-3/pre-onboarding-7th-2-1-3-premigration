@@ -1,27 +1,27 @@
 import Header from "components/Header";
 import CarDetail from "components/CarDetail";
-import { CarContext } from "context/CarContext";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useCarState } from "context/CarContext";
+import { HEADER_DATA } from "constants/HeaderData";
 
-function Detail() {
+const Detail = () => {
   const { id } = useParams();
   const {
     carState: { carList, selectedCar },
-    findCars,
-  } = useContext(CarContext);
+    findCar,
+  } = useCarState();
 
   useEffect(() => {
-    findCars(id);
+    findCar(id);
   }, [carList]);
 
-  console.log(selectedCar);
   return (
     <section>
-      <Header title="차량상세" />
-      {selectedCar && <CarDetail selectedCar={selectedCar} />}
+      <Header title={HEADER_DATA.CAR_DETAIL} redirect />
+      <CarDetail selectedCar={selectedCar} />
     </section>
   );
-}
+};
 
 export default Detail;

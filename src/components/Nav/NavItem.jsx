@@ -1,8 +1,7 @@
-import { CarContext } from "context/CarContext";
-import { useContext } from "react";
 import { NavItemStyle, NavButton } from "./Nav.style";
+import { useCarState } from "../../context/CarContext";
 
-function NavItem({
+const NavItem = ({
   text,
   segment,
   fuelType,
@@ -10,8 +9,8 @@ function NavItem({
   selectedCategory,
   setSelectedCategory,
   setNavScrollXIdx,
-}) {
-  const { getCars } = useContext(CarContext);
+}) => {
+  const { getCars } = useCarState();
 
   const handleNavBox = () => {
     getCars({ fuelType, segment });
@@ -25,6 +24,6 @@ function NavItem({
       </NavButton>
     </NavItemStyle>
   );
-}
+};
 
 export default NavItem;

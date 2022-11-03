@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import * as Style from "./Error.style";
-function Error() {
+
+const Error = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
@@ -23,6 +24,6 @@ function Error() {
       </section>
     </>
   );
-}
+};
 
 export default Error;
