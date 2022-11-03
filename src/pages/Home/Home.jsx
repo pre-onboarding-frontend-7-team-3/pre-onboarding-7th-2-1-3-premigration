@@ -1,6 +1,7 @@
 import CarList from "components/CarList";
 import Nav from "components/Nav";
 import { useCarState } from "../../context/CarContext";
+import Loading from "components/common/Loading";
 
 function Home() {
   const {
@@ -10,7 +11,7 @@ function Home() {
   return (
     <section>
       <Nav />
-      {loading ? <p>loading...</p> : <CarList carList={carList} />}
+      {loading ? <Loading /> : <CarList carList={carList} />}
     </section>
   );
 }
