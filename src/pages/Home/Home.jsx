@@ -1,21 +1,19 @@
 import CarList from "components/CarList";
 import Header from "components/Header";
 import Nav from "components/Nav";
-import { CarContext } from "context/CarContext";
-import { useContext, useEffect } from "react";
+import { useCarState } from "../../context/CarContext";
+import Loading from "components/common/Loading/Loading";
 
 function Home() {
   const {
-    carState: { carList },
-    isLoading,
-    errorMessage,
-  } = useContext(CarContext);
+    carState: { carList, loading },
+  } = useCarState();
 
   return (
     <section style={{ width: "100%" }}>
       <Header title="전체차량" header />
       <Nav />
-      {isLoading ? <p>loading...</p> : <CarList carList={carList} />}
+      {loading ? <Loading /> : <CarList carList={carList} />}
     </section>
   );
 }
