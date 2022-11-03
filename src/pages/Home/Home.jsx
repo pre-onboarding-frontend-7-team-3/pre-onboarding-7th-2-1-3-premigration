@@ -4,13 +4,14 @@ import { useCarState } from "../../context/CarContext";
 
 function Home() {
   const {
-    carState: { carList, loading },
+    carState: {
+      carList: { data, loading,error },
+    },
   } = useCarState();
-
   return (
     <section>
       <Nav />
-      {loading ? <p>loading...</p> : <CarList carList={carList} />}
+      {loading ? <p>loading...</p> : <CarList carList={data} />}
     </section>
   );
 }

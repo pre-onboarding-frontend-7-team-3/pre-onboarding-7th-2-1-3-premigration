@@ -1,11 +1,10 @@
 import { createContext, useReducer, useEffect, useCallback, useContext } from "react";
 import { getCars } from "apis";
 import { CAR_ACTION_TYPES, carReducer } from "helpers/useCarReducer";
+import { reducerUtils } from "utils/reducerUtils";
 
 const state = {
-  carList: [],
-  loading: false,
-  error: null,
+  carList: reducerUtils.default(),
   selectedCar: null,
 };
 
@@ -21,8 +20,8 @@ export default function CarContextWrapper({ children }) {
         dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_SUCCESS, cars: res });
       })
       .catch((error) => {
-        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_ERROR });
-        throw new Error(error);
+        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_ERROR, error });
+        throw new Error(error.message);
       });
   }, []);
 
