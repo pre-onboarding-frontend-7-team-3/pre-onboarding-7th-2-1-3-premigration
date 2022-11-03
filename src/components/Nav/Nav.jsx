@@ -6,9 +6,8 @@ import NavItem from "./NavItem";
 
 function Nav() {
   const navWrapperRef = useRef(null);
-  const [selectedCategory, setSelectedCategory] = useState(0);
   const [navItemWidth, setNavItemWidth] = useState(0);
-  const { navScrollXIdx, setNavScrollXIdx } = useContext(NavContext);
+  const { navScrollXIdx, setNavScrollXIdx, selectedCategory, setSelectedCategory } = useContext(NavContext);
 
   useEffect(() => {
     navWrapperRef.current.scrollTo(navItemWidth * navScrollXIdx, 0);
