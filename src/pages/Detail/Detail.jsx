@@ -1,7 +1,7 @@
 import Header from "components/Header";
 import CarDetail from "components/CarDetail";
 import { CarContext } from "context/CarContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function Detail() {
