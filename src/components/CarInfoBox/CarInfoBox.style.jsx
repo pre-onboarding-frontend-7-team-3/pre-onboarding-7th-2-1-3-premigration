@@ -11,6 +11,8 @@ export const Wrapper = styled.article`
 
   border-bottom: 1px solid black;
   background-color: ${(props) => props.theme.WHITE};
+
+  cursor: pointer;
 `;
 
 export const InnerWrapper = styled.div`
@@ -60,8 +62,8 @@ export const ImageWrapper = styled.div`
   display: flex;
   margin-right: -3vw;
 
-  width: 40vw;
-  height: 15vh;
+  width: 172px;
+  height: 100px;
 
   background-color: ${(props) => props.theme.GRAY};
 `;
