@@ -1,7 +1,7 @@
 import LayOut from "components/LayOut";
 import CarContextWrapper from "context/CarContext";
 import { useMediaQuery } from "react-responsive";
-import { Home, Detail } from "pages";
+import { Home, Detail, Error } from "pages";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
             <Route element={<LayOut />}>
               <Route path="/" element={<Home />} />
               <Route path="/detail:id" element={<Detail />} />
+              <Route path="/*" element={<Error />} />
             </Route>
           </Routes>
         </Mobile>

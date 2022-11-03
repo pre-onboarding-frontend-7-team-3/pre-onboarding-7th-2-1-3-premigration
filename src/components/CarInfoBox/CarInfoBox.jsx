@@ -4,7 +4,7 @@ import isNew from "utils/isNew";
 import Button from "../common/Button";
 import * as Style from "./CarInfoBox.style";
 
-function CarInfoBox({ attribute: { brand, name } }) {
+function CarInfoBox({ attribute: { brand, name, segment, fuelType, imageUrl } }) {
   return (
     <Style.Wrapper>
       <Style.InnerWrapper>
