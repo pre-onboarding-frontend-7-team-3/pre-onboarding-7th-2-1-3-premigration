@@ -5,7 +5,7 @@ function Header({ title, header }) {
   return (
     <HeaderStyle>
       {!header && <BackButton />}
-      <h3>{title}</h3>
+      {title}
     </HeaderStyle>
   );
 }
