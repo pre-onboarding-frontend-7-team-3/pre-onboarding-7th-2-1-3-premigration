@@ -13,7 +13,7 @@ function Home() {
 
   return (
     <section style={{ width: "100%" }}>
-      <Header title="전체차량" />
+      <Header title="전체차량" header />
       <Nav />
       {isLoading ? <p>loading...</p> : <CarList carList={carList} />}
     </section>
