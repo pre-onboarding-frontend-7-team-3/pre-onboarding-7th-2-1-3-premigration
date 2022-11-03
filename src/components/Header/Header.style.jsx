@@ -3,11 +3,8 @@ import styled from "styled-components";
 const HeaderStyle = styled.header`
   position: relative;
   display: flex;
-<<<<<<< HEAD
-=======
   align-items: center;
   color: #000000;
->>>>>>> 12ae89d09019a2178d206d3c8da38e6a3a7efea9
   justify-content: center;
   align-items: center;
 
