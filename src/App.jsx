@@ -11,7 +11,7 @@ function App() {
   };
 
   const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ maxWidth: 450, minWidth: 350 });
+    const isMobile = useMediaQuery({ maxWidth: 450, minWidth: 360 });
     return isMobile ? children : null;
   };
   return (
@@ -24,6 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/*" element={<Error />} />
           </Routes>
         </Mobile>
       </NavContextWrapper>

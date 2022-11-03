@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-
+import * as Style from "./Error.style";
 function Error() {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -7,7 +7,7 @@ function Error() {
   return (
     <>
       <section>
-        <header>
+        <Style.Errheader>
           {state ? (
             <>
               <p>다음과 같은 이유로 오류가 났습니다😅</p>
@@ -16,10 +16,10 @@ function Error() {
           ) : (
             "해당 페이지를 찾을 수 없습니다.😅"
           )}
-        </header>{" "}
-        <button size="lg" ripple={true} onClick={() => navigate("/")}>
+        </Style.Errheader>{" "}
+        <Style.HomeBtn size="lg" ripple={true} onClick={() => navigate("/")}>
           홈으로
-        </button>
+        </Style.HomeBtn>
       </section>
     </>
   );
