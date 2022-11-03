@@ -9,11 +9,11 @@ const Detail = () => {
   const { id } = useParams();
   const {
     carState: { carList, selectedCar },
-    findCar,
+    handleGetCarById,
   } = useCarState();
 
   useEffect(() => {
-    findCar(id);
+    handleGetCarById(id);
   }, [carList]);
 
   return (

@@ -10,10 +10,10 @@ const NavItem = ({
   setSelectedCategory,
   setNavScrollXIdx,
 }) => {
-  const { getCars } = useCarState();
+  const { handleGetCarList } = useCarState();
 
   const handleNavBox = () => {
-    getCars({ fuelType, segment });
+    handleGetCarList({ fuelType, segment });
     setSelectedCategory(idx);
     setNavScrollXIdx(idx);
   };
