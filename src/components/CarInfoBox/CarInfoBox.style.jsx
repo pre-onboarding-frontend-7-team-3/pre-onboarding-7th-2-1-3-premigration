@@ -36,7 +36,7 @@ export const TextWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 170px;
+  min-width: 190px;
 
   /* width:100%; */
   /* padding: 5px; */
@@ -71,7 +71,6 @@ export const ImageWrapper = styled.div`
   /* margin-right: -3vw; */
 
   width: 40vw;
-  height:100%;
   height: 11vh;
 
   background-color: ${(props) => props.theme.GRAY};
@@ -79,6 +78,7 @@ export const ImageWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   position: absolute;
+  /* top:  0; */
   right: -10%;
-  top: -12%;
+  top: -4%;
 `;

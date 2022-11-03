@@ -1,11 +1,12 @@
 import Button from "../common/Button";
 import * as Style from "./CarInfoBox.style";
 import { Link } from "react-router-dom";
+import formatAttribute from "utils/formatAttribute";
 
-function CarInfoBox({ attribute: { brand, name, classType, amount }, id }) {
+function CarInfoBox({ attribute: { brand, name, segment, fuelType }, amount, id }) {
   return (
     <Style.Wrapper>
-      <Link to={`/detail/${id}`} state={{ idx: "1" }}>
+      <Link to={`/detail/${id}`}>
         <Style.InnerWrapper>
           <Style.AttributeWrapper>
             <Style.TextWrapper>
@@ -13,8 +14,10 @@ function CarInfoBox({ attribute: { brand, name, classType, amount }, id }) {
               <Style.MainAttribute>{name}</Style.MainAttribute>
             </Style.TextWrapper>
             <Style.TextWrapper>
-              <Style.SubAttribute>{brand}</Style.SubAttribute>
-              <Style.SubAttribute>{brand}</Style.SubAttribute>
+              <Style.SubAttribute>
+                {formatAttribute(segment)} / {formatAttribute(fuelType)}
+              </Style.SubAttribute>
+              <Style.SubAttribute>월 {amount.toLocaleString("ko-KR")} 원 부터</Style.SubAttribute>
             </Style.TextWrapper>
           </Style.AttributeWrapper>
           <Style.ImageWrapper>
