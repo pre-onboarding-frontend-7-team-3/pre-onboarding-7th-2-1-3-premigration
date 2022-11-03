@@ -147,6 +147,47 @@ $ npm start
 
 ## 📦 폴더 구조
 
+```
+📂 src
+├── 📂 apis // 차량 리스트를 불러오는 api 관리
+├── 📂 components // 컴포넌트 관리
+│   ├── 📂 common // 재사용되는 컴포넌트 관리
+│   │   ├── 📂 svgs // svg를 함수형으로 분리하여 관리
+│   │   ├── 📄 BackButton // 뒤로 가기 버튼
+│   │   ├── 📄 Button // props로 스타일을 받아 커스텀하여 사용할 수 있는 버튼
+│   │   ├── 📄 Icon // props로 아이콘 이름을 받아 svg를 꺼내 사용할 수 있는 컴포넌트
+│   │   ├── 📄 Loading // 데이터가 응답되기 전에 로딩중 텍스트를 보여주는 컴포넌트
+│   │   ├── 📄 NoData // 보여줄 데이터가 없을 때 텍스트를 보여주는 컴포넌트
+│   ├── 📂 CarDetail // 차량 상세 페이지에 사용되는 컴포넌트
+│   ├── 📂 CarInfoBox // 차량 리스트에 사용되는 하나의 차량 정보에 대한 컴포넌트
+│   ├── 📂 CarList // 차량 리스트 컴포넌트
+│   ├── 📂 Header // 페이지 제목을 나타내는 컴포넌트
+│   └── 📂 Nav // 차량 카테고리 컴포넌트
+├── 📂 constants // 상수 관리
+│   └── 📄 actionType
+├── 📂 context // context API 관리
+│   ├── 📄 CarContext // 차량 정보 관련 Context
+│   └── 📄 NavContext // 차량 카테고리 관련 Context
+├── 📂 pages // 페이지 관리
+│   ├── 📄 Home
+│   ├── 📄 Detail
+│   └── 📄 Error
+├── 📂 styles // global style 적용
+│   ├── 📄 GlobalStyle
+│   └── 📄 Theme
+├── 📂 store // context API 관리
+│   └── 📄 IssuesContext
+├── 📂 utils // 공통적으로 사용되는 util 함수 관리
+│   ├── 📄 carInfoConverter // api를 통해 제공받는 차량정보 한글로 변경
+│   ├── 📄 formatAttribute // api를 통해 제공받는 차량정보 한글로 변경
+│   └── 📄 isNew // 신규 차량인지 확인하는 함수
+├── 📄 App
+└── 📄 index
+
+```
+
+</br>
+
 ## 👨‍👩‍👧‍👦 팀원
 
 | 조은지<br/>(팀장) | 고영훈<br/>(서기) | 김창희<br/>(팀원) | 박정민<br/>(팀원) |
