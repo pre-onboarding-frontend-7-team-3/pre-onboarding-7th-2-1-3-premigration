@@ -1,6 +1,5 @@
-import { CarContext } from "../../context/CarContext";
-import { useContext } from "react";
 import { NavItemStyle, NavButton } from "./Nav.style";
+import { useCarState } from "../../context/CarContext";
 
 function NavItem({
   text,
@@ -11,7 +10,7 @@ function NavItem({
   setSelectedCategory,
   setNavScrollXIdx,
 }) {
-  const { getCars } = useContext(CarContext);
+  const { getCars } = useCarState();
 
   const handleNavBox = () => {
     getCars({ fuelType, segment });

@@ -1,18 +1,18 @@
 import Header from "components/Header";
 import CarDetail from "components/CarDetail";
-import { CarContext } from "context/CarContext";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useCarState } from "context/CarContext";
 
 function Detail() {
   const { id } = useParams();
   const {
     carState: { carList, selectedCar },
-    findCars,
-  } = useContext(CarContext);
+    findCar,
+  } = useCarState();
 
   useEffect(() => {
-    findCars(id);
+    findCar(id);
   }, [carList]);
 
   console.log(selectedCar);

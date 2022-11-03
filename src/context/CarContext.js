@@ -27,14 +27,14 @@ export default function CarContextWrapper({ children }) {
       });
   }, []);
 
-  const findCarsHandler = (id) => {
+  const findCarHandler = (id) => {
     dispatch({ type: CAR_ACTION_TYPES.FIND_CAR_DETAIL, id });
   };
 
   useEffect(getCarsHandler, []);
 
   return (
-    <CarContext.Provider value={{ carState, getCars: getCarsHandler, findCars: findCarsHandler }}>
+    <CarContext.Provider value={{ carState, getCars: getCarsHandler, findCar: findCarHandler }}>
       {children}
     </CarContext.Provider>
   );

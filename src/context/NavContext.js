@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from "react";
+import { useContext, createContext, useMemo, useState } from "react";
 
 export const NavContext = createContext("");
 
@@ -14,3 +14,11 @@ function NavContextWrapper({ children }) {
 }
 
 export default NavContextWrapper;
+
+export const useNavContext = () => {
+  const state = useContext(NavContext);
+  if (!state) {
+    throw new Error("Error finding NavContext");
+  }
+  return state;
+};
