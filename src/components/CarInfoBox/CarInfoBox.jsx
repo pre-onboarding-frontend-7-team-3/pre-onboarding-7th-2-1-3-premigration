@@ -9,11 +9,11 @@ function CarInfoBox({
   attribute: { brand, name, fuelType, segment, imageUrl },
   amount,
   id,
-  startDate,
+  createdAt,
 }) {
   return (
     <Style.Wrapper>
-      <Link to={`/detail/${id}`} state={{ idx: "1" }}>
+      <Link to={`/detail/${id}`}>
         <Style.InnerWrapper>
           <Style.AttributeWrapper>
             <Style.TextWrapper>
@@ -28,11 +28,8 @@ function CarInfoBox({
             </Style.TextWrapper>
           </Style.AttributeWrapper>
           <Style.ImageWrapper url={imageUrl}>
-            {/* <img width="100%" alt={brand} src={imageUrl} /> */}
-
-            {isNew(startDate) && (
+            {isNew(createdAt) && (
               <Style.ButtonWrapper>
-                (
                 <Button
                   width="52px"
                   height="22px"
@@ -44,7 +41,6 @@ function CarInfoBox({
                 >
                   신규
                 </Button>
-                )
               </Style.ButtonWrapper>
             )}
           </Style.ImageWrapper>
