@@ -1,4 +1,4 @@
-# 원티드 프리온보딩 프론트엔드 3팀 - 2weeks - 1
+# 원티드 프리온보딩 프론트엔드 3팀 - Assignment #3
 
 > 목적 : B2C 차량대여 서비스를 제공하는 웹 사이트 구축
 >
@@ -10,13 +10,13 @@
 
 ## 📖 목차
 
-- [실행 방법](notion://www.notion.so/fa94d6048d2047588e23d9ac118ba55a?p=2de19840ab974b45b297096b95590ef3&showMoveTo=true&saveParent=true#%EF%B8%8F-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)
-- [협업 과정](notion://www.notion.so/fa94d6048d2047588e23d9ac118ba55a?p=2de19840ab974b45b297096b95590ef3&showMoveTo=true&saveParent=true#-%ED%98%91%EC%97%85-%EA%B3%BC%EC%A0%95)
-- [Best Practice 및 채택 근거](notion://www.notion.so/fa94d6048d2047588e23d9ac118ba55a?p=2de19840ab974b45b297096b95590ef3&showMoveTo=true&saveParent=true#%EF%B8%8F-best-practice-%EB%B0%8F-%EC%B1%84%ED%83%9D-%EA%B7%BC%EA%B1%B0)
-- [팀 코드 컨벤션](notion://www.notion.so/fa94d6048d2047588e23d9ac118ba55a?p=2de19840ab974b45b297096b95590ef3&showMoveTo=true&saveParent=true#-%ED%8C%80-%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98)
-- [사용 기술](notion://www.notion.so/fa94d6048d2047588e23d9ac118ba55a?p=2de19840ab974b45b297096b95590ef3&showMoveTo=true&saveParent=true#-%EC%82%AC%EC%9A%A9-%EA%B8%B0%EC%88%A0)
-- [폴더 구조](notion://www.notion.so/fa94d6048d2047588e23d9ac118ba55a?p=2de19840ab974b45b297096b95590ef3&showMoveTo=true&saveParent=true#%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0)
-- [팀원](notion://www.notion.so/fa94d6048d2047588e23d9ac118ba55a?p=2de19840ab974b45b297096b95590ef3&showMoveTo=true&saveParent=true#-%ED%8C%80%EC%9B%90)
+- [실행 방법](#%EF%B8%8F-실행-방법)
+- [협업 과정](#-협업-과정)
+- [Best Practice 및 채택 근거](#%EF%B8%8F-best-practice-및-채택-근거)
+- [팀 코드 컨벤션](#-팀-코드-컨벤션)
+- [사용 기술](#-사용-기술)
+- [폴더 구조](#폴더-구조)
+- [팀원](#-팀원)
 
 </br>
 
@@ -30,79 +30,111 @@ $ npm start
 
 </br>
 
+## 📃 협업 과정
+
+본 프로젝트는 동료학습에 최적화된 과정을 찾아가며 진행했습니다. [VSC Live Code extension](<[https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack)>)을 활용해서 라이브 코드 리뷰를 진행하고 각자 구현한 코드에 대한 피드백 및 리팩토링 후 `페어 프로그래밍` 방식으로 Best Practice를 채택했습니다.
+
+1. VSC Live Share
+
+- 개발 초기에 업무를 최대한 작은 단위로 나눈 뒤 같이 프로그래밍하는 방식의 개발 프로세스를 선택했습니다. 단순 화면 공유 기능을 사용했을 때는 동시에 작업을 하거나 다양한 피드백을 주고 받기 어려웠으나 익스텐션을 사용해서 실시간으로 코드를 작성하고 디버깅할 수 있어서 개발 기간을 단축시켰습니다.
+
+</br>
+    
+2. husky를 이용해 commit전 lint 자동 검사
+
 ## ☑️ Best Practice 및 채택 근거
 
-### 1. 컴포넌트의 재사용성 높이기
-
-> src/component/common/
-
-- 재사용이 가능한 공통 컴포넌트들을 분리하여 목적에 맞게 확장하여 사용할 수 있도록 하여 재사용성을 높였습니다.
-
-### 2. 개발 효율성과 생산성 향상
-
+### 1. barrel 방식 / ~~~절대경로 지정  // 영훈님
+- 개발 효율성과 생산성 향상
 - barrel방식으로 폴더 구조를 구성하여 파일이름의 가독성 높이기
-- baseUrl을 지정하여 import시 경로의 가독성 높이기
+- jsconfig.json에 baseUrl을 지정하여 import시 경로의 가독성 높이기
 
-### 3. 관련 state을 한 곳에 모아 응집도 높이기
+### 2. useReducer / useContext Hook
+- 본 프로젝트에서 상태 관리 라이브러리의 제한은 없었으나 내장 API를 사용해서 구현하자는 공통된 의견이 있어 useReducer와 useContext 훅을 채택했습니다. 컴포넌트 단에서 여러 상태를 만들기 보다 컨포넌트 간 상태 공유가 가능하고 비동기 요청에 대한 과정과 결과 상태를 한 영역에서 관리할 수 있는 장점에 의견을 모았습니다. 더 작은 영역에서 확실한 책임을 지도록 커스텀 reducer와 context prodiver 컴포넌트로 로직을 분리해서 관리했습니다.
+> 참고 폴더 [src/context](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/context)
+>
+> 참고 파일 [useCarReducer.js](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/helpers/useCarReducer.js)
 
-- 서버에서 요청받은 데이터, 로딩, 에러의 정보를 `CarContext` 한 곳에 관리하도록 하여 상태흐름 파악이 용이하도록 했습니다.
+### 3. Context API를 활용한 UI에 대한 정보와 데이터 
+  - 팀원들과 모바일 환경에서 원활한 사용자 경험에 대한 의견을 공유한 결과 차량 상세 페이지에서 뒤로가기를 눌렀을 때 직전에 선택한 카테고리, 스크롤 위치 및 데이터가 출력되게 구현 했습니다. 초기에는 기능 별로 사용될 상태를 컴포넌트 단에서 선언하고 관리했으나 context API를 채택해서 선택된 카테고리 상태, 네비게이션 ref에 대한 스크롤 위치 정보 및 차량 목록에 대한 데이터를 관리했습니다.
 
-```jsx
-import { createContext, useReducer, useEffect, useCallback, useContext } from "react";
-import { getCars } from "apis";
-import { carReducer } from "helpers/useCarReducer";
-import { CAR_ACTION_TYPES } from "constants/actionType";
+```javascript
+// NavContext.js
 
-const state = {
-  carList: [],
-  loading: false,
-  error: null,
-  selectedCar: null,
+export const NavContext = createContext("");
+
+const NavContextWrapper = ({ children }) => {
+  const [navScrollXIdx, setNavScrollXIdx] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(0);
+  const value = useMemo(
+    () => ({ navScrollXIdx, setNavScrollXIdx, selectedCategory, setSelectedCategory }),
+    [navScrollXIdx, selectedCategory],
+  );
+
+  return <NavContext.Provider value={value}>{children}</NavContext.Provider>;
 };
 
-export const CarContext = createContext("");
+export default NavContextWrapper;
 
-export default const CarContextWrapper  = ({ children }) => {
-  const [carState, dispatch] = useReducer(carReducer, state);
-
-  const getCarsHandler = useCallback((params = {}) => {
-    dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_LOADING });
-    getCars(params)
-      .then((res) => {
-        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_SUCCESS, cars: res });
-      })
-      .catch((error) => {
-        dispatch({ type: CAR_ACTION_TYPES.GET_CAR_LIST_ERROR });
-        throw new Error(error);
-      });
-  }, []);
-
-  const findCarsHandler = (id) => {
-    dispatch({ type: CAR_ACTION_TYPES.FIND_CAR_DETAIL, id });
-  };
-
-  useEffect(getCarsHandler, []);
-
-  return (
-    <CarContext.Provider value={{ carState, getCars: getCarsHandler, findCars: findCarsHandler }}>
-      {children}
-    </CarContext.Provider>
-  );
-}
-
-export const useCarState = () => {
-  const state = useContext(CarContext);
+export const useNavContext = () => {
+  const state = useContext(NavContext);
   if (!state) {
-    throw new Error("Error finding CarContext Provider");
+    throw new Error("Error finding NavContext");
   }
   return state;
 };
-
 ```
 
-### 4. 반응형, 모바일 웹
+```javascript
+// Nav.jsx
 
-- react-responsive라이브러리를 사용하여 모바일(450px ~ 360px)에 최적화된 UI를 구현했습니다.
+const  Nav = () => {
+  const navWrapperRef = useRef(null);
+  const [navItemWidth, setNavItemWidth] = useState(0);
+  const { navScrollXIdx, setNavScrollXIdx, selectedCategory, setSelectedCategory } =
+    useNavContext();
+
+  useEffect(() => {
+    navWrapperRef.current.scrollTo(navItemWidth * navScrollXIdx, 0);
+  }, [navWrapperRef, navItemWidth]);
+
+  useEffect(() => {
+    const navItemWidth = navWrapperRef.current.firstChild.clientWidth;
+    setNavItemWidth(navItemWidth);
+  }, [navWrapperRef]);
+
+  return (
+    <NavWrapper ref={navWrapperRef}>
+      {NAV_ITEM_DATA.map(({ text, segment, fuelType }, idx) => {
+        return (
+          <NavItem
+            key={idx}
+            text={text}
+            segment={segment}
+            fuelType={fuelType}
+            idx={idx}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            setNavScrollXIdx={setNavScrollXIdx}
+          />
+        );
+      })}
+    </NavWrapper>
+  );
+}
+```
+
+### 4. SEO - 카카오톡, 페이스북에 공유 시 아래의 내용이 미리보기로 노출 (상민님) 
+  - 초기에 어떻게 구현했는지
+  - cra 환경에서의 한계점 및 단점
+
+### 5. next.js 마이그레이션 (상민님) 
+  - why? next js
+  - how?
+  - Next.js와 styled-components 호환성 이슈 : Prop `className` did not match warning 및 해결
+
+### 6. 반응형 모바일 웹
+- 모바일 디바이스의 크기(450px~360px)에 따라 UI가 출력되도록 구현하고자 react-responsive 라이브러리를 사용했습니다. 개발 기간이 길지 않아 개발 생태계가 잘 형성돼있고 어려움 없이 도입할 수 있다는 이유를 근거로 채택했습니다.
 
 ```jsx
 import { useMediaQuery } from "react-responsive";
@@ -121,11 +153,18 @@ const App = () => {
 };
 ```
 
-### 5. 상세페이지에서 뒤로가기 버튼으로 이전페이지로 왔을 때에도 토글된 navItem이 유지되도록 하기
+### 7. 컴포넌트의 재사용성 높이기(상민님)
 
-- 이전페이지로 돌아왔을 때에 토글된 navItem이 유지되는 것이 더 좋은 사용자 경험을 제공한다고 판단했습니다.
-- `navContext`를 이용하여 토글된 navItem의 정보를 관리하여, 토글된 navItem이 유지되도록 구현했습니다.
+컴포넌트화 시켜서 확장성 증가
 
+> src/component/common/
+
+- 재사용이 가능한 공통 컴포넌트들을 분리하여 목적에 맞게 확장하여 사용할 수 있도록 하여 재사용성을 높였습니다.
+
+
+### 8. 상수 데이터의 활용
+  - live share 중 UI 구성에 필요한 정적인 데이터가 하드 코딩 돼있어 가독성이 떨어진다는 의견을 공유했습니다. 반복문을 통해서 코드를 간결하게 정리할 수 있는 데이터는 상수화 처리를 했고 재상용성과 추후 유지보수를 고려해서 [/constants](url) 디렉토리에서 모두 관리 했습니다.
+  > 참고 폴더[/ constants](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/constants/)
 </br>
 
 ## 🔒 팀 코드 컨벤션
@@ -179,28 +218,28 @@ const App = () => {
 │   │   ├── 📄 Loading // 데이터가 응답되기 전에 로딩중 텍스트를 보여주는 컴포넌트
 │   │   ├── 📄 NoData // 보여줄 데이터가 없을 때 텍스트를 보여주는 컴포넌트
 │   ├── 📂 CarDetail // 차량 상세 페이지에 사용되는 컴포넌트
-│   ├── 📂 CarInfoBox // 차량 리스트에 사용되는 하나의 차량 정보에 대한 컴포넌트
+│   ├── 📂 CarListItem // 차량 리스트에 사용되는 하나의 차량 정보에 대한 컴포넌트
 │   ├── 📂 CarList // 차량 리스트 컴포넌트
 │   ├── 📂 Header // 페이지 제목을 나타내는 컴포넌트
 │   └── 📂 Nav // 차량 카테고리 컴포넌트
 ├── 📂 constants // 상수 관리
-│   └── 📄 actionType
+│   │
 ├── 📂 context // context API 관리
 │   ├── 📄 CarContext // 차량 정보 관련 Context
 │   └── 📄 NavContext // 차량 카테고리 관련 Context
 ├── 📂 pages // 페이지 관리
-│   ├── 📄 Home
-│   ├── 📄 Detail
-│   └── 📄 Error
+│   ├── 📂 Home
+│   ├── 📂 Detail
+│   └── 📂 Error
 ├── 📂 styles // global style 적용
 │   ├── 📄 GlobalStyle
 │   └── 📄 Theme
 ├── 📂 store // context API 관리
 │   └── 📄 IssuesContext
 ├── 📂 utils // 공통적으로 사용되는 util 함수 관리
-│   ├── 📄 carInfoConverter // api를 통해 제공받는 차량정보 한글로 변경
 │   ├── 📄 formatAttribute // api를 통해 제공받는 차량정보 한글로 변경
-│   └── 📄 isNew // 신규 차량인지 확인하는 함수
+│   ├── 📄 formatDate // api를 통해 제공받는 날짜정보 출력
+│   └── 📄 isNewCar // 신규 차량인지 확인하는 함수
 ├── 📄 App
 └── 📄 index
 
