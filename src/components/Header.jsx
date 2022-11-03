@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
 import backIcon from "../images/backIcon.svg";
 

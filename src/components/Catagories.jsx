@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { carListApi } from "../Api/client";
 import { useFilter } from "../contexts/filterContext";
 
@@ -57,7 +57,7 @@ const Catagories = () => {
             key={tag.id}
             onClick={(e) => queryButton(e, tag.query, idx)}
           >
-            {tag.filter}
+            <CatagoriesLayOut>{tag.filter}</CatagoriesLayOut>
           </CatagoriesTag>
         );
       })}
@@ -68,25 +68,32 @@ const Catagories = () => {
 export default Catagories;
 
 export const CatagoriesContainer = styled.nav`
-  width: 100%;
+  max-width: 1440px;
   height: 39px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  overflow-x: auto;
+  white-space: nowrap;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const CatagoriesLayOut = styled.div`
+  margin-top: 7px;
+  font-weight: 700;
+  font-size: 14px;
 `;
 
 export const CatagoriesTag = styled.div`
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ color }) => color};
-  width: 62px;
-  height: 27px;
+  min-width: 62px;
+  min-height: 27px;
   border-radius: 62px;
-  font-weight: 700;
-  font-size: 14px;
   margin: 0 10px 0 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  text-align: center;
 `;

@@ -1,22 +1,18 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import Header from "../components/Header";
 import CarDetail from "../components/CarDetail";
-import { FilterProvider } from "../contexts/filterContext";
+import { useParams } from "react-router-dom";
 
 const Detail = () => {
   const params = useParams();
-  const id = params.id;
 
   return (
     <>
-      <FilterProvider>
-        <DetailLayout>
-          <Header />
-          <CarDetail id={id} />
-        </DetailLayout>
-      </FilterProvider>
+      <DetailLayout>
+        <Header />
+        <CarDetail id={params.id} />
+      </DetailLayout>
     </>
   );
 };

@@ -1,9 +1,11 @@
 import axios from "axios";
+import { BASE_URL } from "../config";
 
 export const carListApi = async (e, query) => {
   if (query === undefined && e === undefined) {
     query = " ";
   }
-  const { data } = await axios.get(`https://preonboarding.platdev.net/api/cars?segment=${query}`);
+  const { data } = await axios.get(`${BASE_URL}?segment=${query}`);
+
   return { data };
 };

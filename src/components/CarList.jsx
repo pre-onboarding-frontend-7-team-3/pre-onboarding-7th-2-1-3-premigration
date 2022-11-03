@@ -1,21 +1,22 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "@emotion/styled";
-import newCheckedData from "../utils/newCheckedData";
+import styled from "styled-components";
 import NewTag from "./NewTag";
+import forSpiltNumber from "../utils/forSplitNumber";
+import newCheckedData from "../utils/newCheckedData";
 
 const CarList = ({ car }) => {
   const createdAt = newCheckedData(car.createdAt);
-  console.log(createdAt);
 
   const [tagToogle, setTagToogle] = useState(false);
 
   if (!createdAt) {
     setTagToogle((pre) => !pre);
   }
+  console.log();
 
   return (
-    <Link to={`/${car.id}`}>
+    <Link key={car.id} to={`/${car.id}`}>
       <CarListContainer>
         <CarDetailForText>
           <BrandAndName>
@@ -37,7 +38,7 @@ const CarList = ({ car }) => {
               : car.attribute.fuelType === "ev"
               ? (car.attribute.fuelType = "전기")
               : (car.attribute.fuelType = "하이브리드")}
-            <br />월 {car.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원 부터
+            <br />월 {forSpiltNumber(car.amount)} 원 부터
           </SegmentAndPayment>
         </CarDetailForText>
         <CarImgContainer>

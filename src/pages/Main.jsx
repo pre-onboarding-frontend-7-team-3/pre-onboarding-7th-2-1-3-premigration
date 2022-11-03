@@ -3,18 +3,15 @@ import styled from "@emotion/styled";
 import Header from "../components/Header";
 import Catagories from "../components/Catagories";
 import CarData from "../components/CarData";
-import { FilterProvider } from "../contexts/filterContext";
 
 const Main = () => {
   return (
     <>
-      <FilterProvider>
-        <MainLayout>
-          <Header />
-          <Catagories />
-          <CarData />
-        </MainLayout>
-      </FilterProvider>
+      <MainLayout>
+        <Header />
+        <Catagories />
+        <CarData />
+      </MainLayout>
     </>
   );
 };

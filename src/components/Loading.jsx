@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 const Loading = () => {
   return <LoadingGuide>불러오는 중</LoadingGuide>;

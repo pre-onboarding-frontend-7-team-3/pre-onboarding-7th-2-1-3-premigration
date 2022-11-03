@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "@emotion/styled";
-
+import styled from "styled-components";
 const NewTag = () => {
   return <NewTagContainer>신규</NewTagContainer>;
 };
@@ -19,4 +18,5 @@ export const NewTagContainer = styled.div`
   font-weight: 700;
   font-size: 12px;
   border-radius: 42px;
+  margin: 20px 0 0 105px;
 `;
