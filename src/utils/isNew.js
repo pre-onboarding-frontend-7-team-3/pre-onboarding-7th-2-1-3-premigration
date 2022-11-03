@@ -1,9 +1,7 @@
-import React from "react";
-
 const isNew = (date) => {
-  const today = new Date();
-  const uploadedDate = new Date(date);
-  const isNew = today.getDate() - uploadedDate.getDate() <= 1;
+  const today = Date.now();
+  const uploadedDate = new Date(date).getTime();
+  const isNew = today - uploadedDate <= 1;
   return isNew;
 };
 
