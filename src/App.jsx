@@ -6,29 +6,21 @@ import { Home, Detail } from "pages";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const Desktop = ({ children }) => {
-    const isDesktop = useMediaQuery({ minWidth: 451 });
-    return isDesktop ? children : null;
-  };
+  const isDesktop = useMediaQuery({ minWidth: 451 });
 
-  const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ maxWidth: 450, minWidth: 350 });
-    return isMobile ? children : null;
-  };
+  if (isDesktop) {
+    return <h1>화면을 줄여 이용해주세요</h1>;
+  }
+
   return (
     <CarContextWrapper>
       <NavContextWrapper>
-        <Desktop>
-          <h1>화면을 줄여 이용해주세요</h1>
-        </Desktop>
-        <Mobile>
-          <Routes>
-            <Route element={<LayOut />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/detail/:id" element={<Detail />} />
-            </Route>
-          </Routes>
-        </Mobile>
+        <Routes>
+          <Route element={<LayOut />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/detail/:id" element={<Detail />} />
+          </Route>
+        </Routes>
       </NavContextWrapper>
     </CarContextWrapper>
   );
