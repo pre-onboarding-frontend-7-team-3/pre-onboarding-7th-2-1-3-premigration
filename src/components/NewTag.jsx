@@ -8,8 +8,15 @@ const NewTag = () => {
 export default NewTag;
 
 export const NewTagContainer = styled.div`
-  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 150px;
   width: 52px;
-  heigth: 22px;
-  background-color: red;
+  height: 22px;
+  background-color: ${(props) => props.theme.style.blue};
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 42px;
 `;

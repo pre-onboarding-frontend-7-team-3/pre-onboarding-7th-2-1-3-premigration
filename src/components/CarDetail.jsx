@@ -1,28 +1,29 @@
 import styled from "@emotion/styled";
-import React, { useEffect } from "react";
+import React from "react";
 import { useFilter } from "../contexts/filterContext";
+import convertDateFormat from "../utils/convertDateFormat";
 
 const CarDetail = ({ id }) => {
   const { cars } = useFilter();
   const data = cars[id - 1];
-  console.log(cars);
 
-  useEffect(() => {}, []);
   return (
     <>
       <CarDetailImgContainer>
         <CarDetailImg src={data?.attribute.imageUrl} />
       </CarDetailImgContainer>
       <DetailBrandName>
-        {data?.attribute.brand}
+        <Brand>{data?.attribute.brand}</Brand>
         <br />
-        {data?.attribute.name}
+        <Name>{data?.attribute.name}</Name>
       </DetailBrandName>
-      <DetailCarInfoText>{data?.amount}</DetailCarInfoText>
+      <DetailCarInfoText>
+        <Amount>월 {data?.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</Amount>
+      </DetailCarInfoText>
       <DetailCarInfoTitle>차량정보</DetailCarInfoTitle>
-      <DetailCarInfoText>차종 : {data?.attribute.segment}</DetailCarInfoText>
-      <DetailCarInfoText>연료 : {data?.attribute.fuelType}</DetailCarInfoText>
-      <DetailCarInfoText>이용 가능일 : {data?.startDate}</DetailCarInfoText>
+      <DetailCarInfoText>차종 {data?.attribute.segment}</DetailCarInfoText>
+      <DetailCarInfoText>연료 {data?.attribute.fuelType}</DetailCarInfoText>
+      <DetailCarInfoText>이용 가능일 {convertDateFormat(data?.startDate)}</DetailCarInfoText>
       <DetailCarInfoTitle>보험</DetailCarInfoTitle>
       <DetailCarInfoText>
         {data?.insurance[0]?.name} {data?.insurance[0]?.description}
@@ -53,12 +54,37 @@ export const CarDetailImg = styled.img`
 
 export const DetailBrandName = styled.div`
   height: 92px;
+  margin-left: 20px;
+`;
+
+export const Brand = styled.div`
+  font-weight: 700;
+  font-size: 20px;
+`;
+
+export const Name = styled.div`
+  font-weight: 700;
+  font-size: 24px;
+`;
+
+export const Amount = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 22px;
 `;
 
 export const DetailCarInfoTitle = styled.div`
   height: 48px;
   background-color: ${(props) => props.theme.style.blue};
   color: white;
+  font-weight: 700;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+`;
+
+export const CarInfo = styled.div`
+  margin-left: 20px;
 `;
 
 export const DetailCarInfoText = styled.div`

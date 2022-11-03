@@ -1,11 +1,19 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import newCheckedData from "../utils/newCheckedData";
 import NewTag from "./NewTag";
 
 const CarList = ({ car }) => {
-  // const createdAt = car.createdAt
-  console.log(car.id);
+  const createdAt = newCheckedData(car.createdAt);
+  console.log(createdAt);
+
+  const [tagToogle, setTagToogle] = useState(false);
+
+  if (!createdAt) {
+    setTagToogle((pre) => !pre);
+  }
+
   return (
     <Link to={`/${car.id}`}>
       <CarListContainer>
@@ -16,17 +24,24 @@ const CarList = ({ car }) => {
             {car.attribute.name}
           </BrandAndName>
           <SegmentAndPayment>
-            {car.attribute.segment === "ㅊ"
+            {car.attribute.segment === "E"
               ? (car.attribute.segment = "대형")
               : car.attribute.segment === "D"
               ? (car.attribute.segment = "중형")
-              : (car.attribute.segment = "소형")}
-            / {car.attribute.fuelType}
-            <br />월 {car.amount} 원 부터
+              : car.attribute.segment === "C"
+              ? (car.attribute.segment = "소형")
+              : (car.attribute.segment = "SUV")}
+            /
+            {car.attribute.fuelType === "gasoline"
+              ? (car.attribute.fuelType = "가솔린")
+              : car.attribute.fuelType === "ev"
+              ? (car.attribute.fuelType = "전기")
+              : (car.attribute.fuelType = "하이브리드")}
+            <br />월 {car.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원 부터
           </SegmentAndPayment>
         </CarDetailForText>
         <CarImgContainer>
-          {<NewTag />}
+          {!tagToogle && <NewTag />}
           <CarImg src={car.attribute.imageUrl} />
         </CarImgContainer>
       </CarListContainer>
@@ -36,7 +51,7 @@ const CarList = ({ car }) => {
 
 export default CarList;
 
-export const CarListContainer = styled.div`
+export const CarListContainer = styled.article`
   width: 100%;
   height: 120px;
   display: flex;

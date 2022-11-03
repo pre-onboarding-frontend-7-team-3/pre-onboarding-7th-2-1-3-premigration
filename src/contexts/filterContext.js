@@ -5,14 +5,19 @@ export const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
   const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading((pre) => !pre);
     carListApi().then(({ data }) => {
+      setLoading((pre) => !pre);
       setCars(data.payload);
     });
   }, []);
 
-  return <FilterContext.Provider value={{ cars, setCars }}>{children}</FilterContext.Provider>;
+  return (
+    <FilterContext.Provider value={{ cars, setCars, loading }}>{children}</FilterContext.Provider>
+  );
 };
 
 export const useFilter = () => useContext(FilterContext);

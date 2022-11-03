@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { carListApi } from "../Api/client";
 import { useFilter } from "../contexts/filterContext";
@@ -12,7 +12,7 @@ const TAGS = [
   {
     id: 2,
     filter: "대형",
-    query: "SUV",
+    query: "E",
   },
 
   {
@@ -25,11 +25,19 @@ const TAGS = [
     filter: "소형",
     query: "C",
   },
+  {
+    id: 5,
+    filter: "SUV",
+    query: "SUV",
+  },
 ];
 
 const Catagories = () => {
   const { setCars } = useFilter();
-  const queryButton = (e, query) => {
+  const [clickedTag, setClickedTag] = useState(0);
+
+  const queryButton = (e, query, idx) => {
+    setClickedTag(idx);
     carListApi(e, query).then(({ data }) => {
       setCars(data.payload);
     });
@@ -37,9 +45,18 @@ const Catagories = () => {
 
   return (
     <CatagoriesContainer>
-      {TAGS.map((tag) => {
+      {TAGS.map((tag, idx) => {
+        const buttonStyle =
+          clickedTag === idx
+            ? { backgroundColor: "gray", color: "white" }
+            : { backgroundColor: "#D9D9D9", color: "black" };
+
         return (
-          <CatagoriesTag key={tag.id} onClick={(e) => queryButton(e, tag.query)}>
+          <CatagoriesTag
+            {...buttonStyle}
+            key={tag.id}
+            onClick={(e) => queryButton(e, tag.query, idx)}
+          >
             {tag.filter}
           </CatagoriesTag>
         );
@@ -50,7 +67,7 @@ const Catagories = () => {
 
 export default Catagories;
 
-export const CatagoriesContainer = styled.div`
+export const CatagoriesContainer = styled.nav`
   width: 100%;
   height: 39px;
   display: flex;
@@ -61,10 +78,11 @@ export const CatagoriesContainer = styled.div`
 `;
 
 export const CatagoriesTag = styled.div`
-  background-color: ${(props) => props.theme.style.lightgray};
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ color }) => color};
   width: 62px;
   height: 27px;
-  border-radius: 62px;s
+  border-radius: 62px;
   font-weight: 700;
   font-size: 14px;
   margin: 0 10px 0 10px;

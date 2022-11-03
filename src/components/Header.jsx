@@ -1,13 +1,28 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { useNavigate, useLocation } from "react-router-dom";
+import backIcon from "../images/backIcon.svg";
 
 const Header = () => {
-  return <HeaderContainer>전체차량</HeaderContainer>;
+  const location = useLocation();
+  const currentURL = location.pathname;
+  const isMain = currentURL;
+  const navigate = useNavigate();
+  const goMain = () => {
+    navigate("/");
+  };
+
+  return (
+    <HeaderContainer>
+      {isMain === "/" ? " " : <GotoMainIcon src={backIcon} onClick={goMain}></GotoMainIcon>}
+      {isMain === "/" ? "전체차량" : "상세차량"}
+    </HeaderContainer>
+  );
 };
 
 export default Header;
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
   width: 100%;
   height: 60px;
   display: flex;
@@ -15,4 +30,9 @@ const HeaderContainer = styled.div`
   align-items: center;
   font-weight: 700;
   font-size: 17px;
+`;
+
+const GotoMainIcon = styled.img`
+  position: absolute;
+  left: 25px;
 `;
