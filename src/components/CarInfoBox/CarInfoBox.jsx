@@ -1,8 +1,16 @@
-import Button from "../common/Button";
 import * as Style from "./CarInfoBox.style";
 import { Link } from "react-router-dom";
+import Button from "components/common/Button";
+import isNew from "utils/isNew";
+import { memo } from "react";
+import { carInfoConverter } from "utils/carInfoConverter";
 
-function CarInfoBox({ attribute: { brand, name, classType, amount }, id }) {
+function CarInfoBox({
+  attribute: { brand, name, fuelType, segment, imageUrl },
+  amount,
+  id,
+  startDate,
+}) {
   return (
     <Style.Wrapper>
       <Link to={`/detail/${id}`} state={{ idx: "1" }}>
@@ -13,24 +21,32 @@ function CarInfoBox({ attribute: { brand, name, classType, amount }, id }) {
               <Style.MainAttribute>{name}</Style.MainAttribute>
             </Style.TextWrapper>
             <Style.TextWrapper>
-              <Style.SubAttribute>{brand}</Style.SubAttribute>
-              <Style.SubAttribute>{brand}</Style.SubAttribute>
+              <Style.SubAttribute>
+                {carInfoConverter[fuelType]} / {carInfoConverter[segment]}
+              </Style.SubAttribute>
+              <Style.SubAttribute>월 {amount.toLocaleString()}원 부터</Style.SubAttribute>
             </Style.TextWrapper>
           </Style.AttributeWrapper>
-          <Style.ImageWrapper>
-            <Style.ButtonWrapper>
-              <Button
-                width="52px"
-                height="22px"
-                borderRadius="42px"
-                fontSize="12px"
-                fontWeight="700"
-                color={(props) => props.theme.WHITE}
-                backgroundColor={(props) => props.theme.BLUE}
-              >
-                신규
-              </Button>
-            </Style.ButtonWrapper>
+          <Style.ImageWrapper url={imageUrl}>
+            {/* <img width="100%" alt={brand} src={imageUrl} /> */}
+
+            {isNew(startDate) && (
+              <Style.ButtonWrapper>
+                (
+                <Button
+                  width="52px"
+                  height="22px"
+                  borderRadius="42px"
+                  fontSize="12px"
+                  fontWeight="700"
+                  color={(props) => props.theme.WHITE}
+                  backgroundColor={(props) => props.theme.BLUE}
+                >
+                  신규
+                </Button>
+                )
+              </Style.ButtonWrapper>
+            )}
           </Style.ImageWrapper>
         </Style.InnerWrapper>
       </Link>
@@ -38,4 +54,4 @@ function CarInfoBox({ attribute: { brand, name, classType, amount }, id }) {
   );
 }
 
-export default CarInfoBox;
+export default memo(CarInfoBox);

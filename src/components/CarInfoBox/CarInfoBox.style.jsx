@@ -19,14 +19,14 @@ export const InnerWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  
+
   width: 100%;
 `;
 
 export const AttributeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   gap: 8px;
 `;
 
@@ -71,10 +71,11 @@ export const ImageWrapper = styled.div`
   /* margin-right: -3vw; */
 
   width: 40vw;
-  height:100%;
+  height: 100%;
   height: 11vh;
-
-  background-color: ${(props) => props.theme.GRAY};
+  background-image: ${(props) => `url(${props.url})`};
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export const ButtonWrapper = styled.div`
