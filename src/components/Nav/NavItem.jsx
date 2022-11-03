@@ -1,4 +1,9 @@
 import { useCarState } from "../../context/CarContext";
+import { useContext } from "react";
+import { CarContext } from "context/CarContext";
+
+import Button from "../common/Button";
+
 import { NavItemStyle } from "./Nav.style";
 
 import Button from "../common/Button";

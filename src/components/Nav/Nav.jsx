@@ -1,6 +1,7 @@
-import { NavWrapper } from "./Nav.style";
 import { NavData } from "./NavData";
 import NavItem from "./NavItem";
+
+import { NavWrapper } from "./Nav.style";
 
 function Nav() {
   return (
