@@ -2,7 +2,7 @@ import { useContext, createContext, useMemo, useState } from "react";
 
 export const NavContext = createContext("");
 
-function NavContextWrapper({ children }) {
+const NavContextWrapper = ({ children }) => {
   const [navScrollXIdx, setNavScrollXIdx] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState(0);
   const value = useMemo(
@@ -11,7 +11,7 @@ function NavContextWrapper({ children }) {
   );
 
   return <NavContext.Provider value={value}>{children}</NavContext.Provider>;
-}
+};
 
 export default NavContextWrapper;
 

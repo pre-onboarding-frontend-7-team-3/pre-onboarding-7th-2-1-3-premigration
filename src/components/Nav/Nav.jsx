@@ -4,7 +4,7 @@ import { NAV_ITEM_DATA } from "../../constants/NavData";
 import NavItem from "./NavItem";
 import { useNavContext } from "context/NavContext";
 
-function Nav() {
+const  Nav = () => {
   const navWrapperRef = useRef(null);
   const [navItemWidth, setNavItemWidth] = useState(0);
   const { navScrollXIdx, setNavScrollXIdx, selectedCategory, setSelectedCategory } =

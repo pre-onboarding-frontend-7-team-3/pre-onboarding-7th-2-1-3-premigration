@@ -5,12 +5,12 @@ import isNew from "utils/isNewCar";
 import { memo } from "react";
 import formatAttribute from "utils/formatAttribute";
 
-function CarInfoBox({
+const CarInfoBox = ({
   attribute: { brand, name, fuelType, segment, imageUrl },
   amount,
   id,
-  startDate,
-}) {
+  createdAt,
+}) => {
   return (
     <Style.Wrapper>
       <Link to={`/detail/${id}`}>
@@ -28,9 +28,8 @@ function CarInfoBox({
             </Style.TextWrapper>
           </Style.AttributeWrapper>
           <Style.ImageWrapper url={imageUrl}>
-            {isNew(startDate) && (
+            {isNew(createdAt) && (
               <Style.ButtonWrapper>
-                (
                 <Button
                   width="52px"
                   height="22px"
@@ -42,7 +41,6 @@ function CarInfoBox({
                 >
                   신규
                 </Button>
-                )
               </Style.ButtonWrapper>
             )}
           </Style.ImageWrapper>
@@ -50,6 +48,6 @@ function CarInfoBox({
       </Link>
     </Style.Wrapper>
   );
-}
+};
 
 export default memo(CarInfoBox);

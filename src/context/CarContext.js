@@ -12,7 +12,7 @@ const state = {
 
 export const CarContext = createContext("");
 
-export default function CarContextWrapper({ children }) {
+export const CarContextWrapper = ({ children }) => {
   const [carState, dispatch] = useReducer(carReducer, state);
 
   const getCarsHandler = useCallback(async (params) => {
@@ -39,7 +39,7 @@ export default function CarContextWrapper({ children }) {
       {children}
     </CarContext.Provider>
   );
-}
+};
 
 export const useCarState = () => {
   const state = useContext(CarContext);

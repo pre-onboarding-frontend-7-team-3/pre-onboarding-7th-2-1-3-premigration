@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Icon from "../Icon";
 import { BackButtonWrapper } from "./BackButton.style";
 
-function BackButton() {
+const BackButton = () => {
   return (
     <Link to="/">
       <BackButtonWrapper>
@@ -10,6 +10,6 @@ function BackButton() {
       </BackButtonWrapper>
     </Link>
   );
-}
+};
 
 export default BackButton;

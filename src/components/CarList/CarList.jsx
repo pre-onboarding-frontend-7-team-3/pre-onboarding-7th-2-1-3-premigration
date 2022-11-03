@@ -3,7 +3,7 @@ import NoData from "components/common/NoData";
 
 import { CarListWrapper } from "./CarList.style";
 
-function CarList({ carList }) {
+const  CarList = ({ carList }) => {
   return (
     <CarListWrapper>
       {carList.length > 0 ? carList.map((car) => <CarInfoBox key={car.id} {...car} />) : <NoData />}

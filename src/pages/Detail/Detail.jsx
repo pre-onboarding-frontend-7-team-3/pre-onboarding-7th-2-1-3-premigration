@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useCarState } from "context/CarContext";
 import { HEADER_DATA } from "constants/HeaderData";
 
-function Detail() {
+const Detail = () => {
   const { id } = useParams();
   const {
     carState: { carList, selectedCar },
@@ -22,6 +22,6 @@ function Detail() {
       <CarDetail selectedCar={selectedCar} />
     </section>
   );
-}
+};
 
 export default Detail;
