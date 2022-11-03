@@ -49,11 +49,15 @@ $ npm start
 - barrel방식으로 폴더 구조를 구성하여 파일이름의 가독성 높이기
 - jsconfig.json에 baseUrl을 지정하여 import시 경로의 가독성 높이기
 
+<br/>
+
 ### 2. useReducer / useContext Hook
 - 본 프로젝트에서 상태 관리 라이브러리의 제한은 없었으나 내장 API를 사용해서 구현하자는 공통된 의견이 있어 useReducer와 useContext 훅을 채택했습니다. 컴포넌트 단에서 여러 상태를 만들기 보다 컨포넌트 간 상태 공유가 가능하고 비동기 요청에 대한 과정과 결과 상태를 한 영역에서 관리할 수 있는 장점에 의견을 모았습니다. 더 작은 영역에서 확실한 책임을 지도록 커스텀 reducer와 context prodiver 컴포넌트로 로직을 분리해서 관리했습니다.
 > 참고 폴더 [src/context](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/context)
 >
 > 참고 파일 [useCarReducer.js](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/helpers/useCarReducer.js)
+
+<br/>
 
 ### 3. Context API를 활용한 UI에 대한 정보와 데이터 
   - 팀원들과 모바일 환경에서 원활한 사용자 경험에 대한 의견을 공유한 결과 차량 상세 페이지에서 뒤로가기를 눌렀을 때 직전에 선택한 카테고리, 스크롤 위치 및 데이터가 출력되게 구현 했습니다. 초기에는 기능 별로 사용될 상태를 컴포넌트 단에서 선언하고 관리했으나 context API를 채택해서 선택된 카테고리 상태, 네비게이션 ref에 대한 스크롤 위치 정보 및 차량 목록에 대한 데이터를 관리했습니다.
@@ -124,14 +128,90 @@ const  Nav = () => {
 }
 ```
 
-### 4. SEO - 카카오톡, 페이스북에 공유 시 아래의 내용이 미리보기로 노출 (상민님) 
-  - 초기에 어떻게 구현했는지
-  - cra 환경에서의 한계점 및 단점
+<br/>
 
-### 5. next.js 마이그레이션 (상민님) 
-  - why? next js
-  - how?
-  - Next.js와 styled-components 호환성 이슈 : Prop `className` did not match warning 및 해결
+### 4. SEO - 카카오톡, 페이스북에 공유 시 아래의 내용이 미리보기로 노출
+- 초기 순수 CRA환경에서 벽을 맞이했습니다. react-hook을 통한 og태그 관련 DOM조작과 react-snap 라이브러리를 통한 pre-render를 사용해보았습니다. 
+비구글 검색엔진에 대하여 SEO crawlling은 가능하게 하였지만, 두 방법 모두 Open Graph에 동적 대응할 수 없었습니다. 
+추가 구현사항을 구현하기 위해서는 next.js로의 마이그레이션이 필요하다고 판단했습니다.
+
+```jsx
+export const useMetaTegs = (TitleofMetaTegs) => {
+  const [metaTegs, setMetaTegs] = useState(TitleofMetaTegs);
+  const updateMetaTags = () => {
+    document.querySelector('meta[property="og:description"]').setAttribute('content', TitleofMetaTegs);
+    document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
+  };
+
+  useEffect(updateMetaTags, [metaTegs]);
+  return setMetaTegs;
+};
+```
+
+<br/>
+
+### 5. next.js 마이그레이션
+- Server Side Rendering, Automatic Routing, Automatic Code Splitting등의 장점을 가진 Next.js. 
+SEO 관련 사항 중 Open Graph를 구현하기위해 마이그레이션을 진행했다.
+- 찾아보니 _App.js에서 SEO처리를 함을 확인했다. 다만, DefaultSEO를 사용하면 그 외의 페이지에서 NextSEO를 통한 동적 SEO의 구현이 먹통이 되는 경우가 발생한다. 
+이를 해결하기 위해 getStaticProps로 _App.js에 pageProps로 데이터를 넘기고 경우에 따라 적당한 SEO(open graph)가 들어갈 수 있도록 처리하였다.
+
+```jsx
+// [id].jsx
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps(context) {
+  const { params } = context;
+
+  const res = await fetch("https://preonboarding.platdev.net/api/cars", {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+    },
+  }).then((res) => res.json());
+
+  return {
+    props: res.payload.filter((e) => {
+      return e.id === Number(params.id);
+    })[0],
+  };
+}
+```
+
+```jsx
+// _App.jsx
+function MyApp({ Component, pageProps }) {
+  const isEmptyObj = (obj) => {
+    if (obj.constructor === Object && Object.keys(obj).length === 0) {
+      return true;
+    }
+    return false;
+  };
+
+  return (
+    <>
+        { /* ... */ }
+        
+      {isEmptyObj(pageProps) ? (
+        <DefaultSeo {...DEFAULT_SEO} />
+      ) : (
+        <SEO data={pageProps} />
+      )}
+      
+        { /* ... */ }
+    </>
+  );
+}
+
+export default MyApp;
+```
+
+<br/>
 
 ### 6. 반응형 모바일 웹
 - 모바일 디바이스의 크기(450px~360px)에 따라 UI가 출력되도록 구현하고자 react-responsive 라이브러리를 사용했습니다. 개발 기간이 길지 않아 개발 생태계가 잘 형성돼있고 어려움 없이 도입할 수 있다는 이유를 근거로 채택했습니다.
@@ -153,16 +233,9 @@ const App = () => {
 };
 ```
 
-### 7. 컴포넌트의 재사용성 높이기(상민님)
+<br/>
 
-컴포넌트화 시켜서 확장성 증가
-
-> src/component/common/
-
-- 재사용이 가능한 공통 컴포넌트들을 분리하여 목적에 맞게 확장하여 사용할 수 있도록 하여 재사용성을 높였습니다.
-
-
-### 8. 상수 데이터의 활용
+### 7. 상수 데이터의 활용
   - live share 중 UI 구성에 필요한 정적인 데이터가 하드 코딩 돼있어 가독성이 떨어진다는 의견을 공유했습니다. 반복문을 통해서 코드를 간결하게 정리할 수 있는 데이터는 상수화 처리를 했고 재상용성과 추후 유지보수를 고려해서 [/constants](url) 디렉토리에서 모두 관리 했습니다.
   > 참고 폴더[/ constants](https://github.com/pre-onboarding-frontend-7-team-3/pre-onboarding-7th-2-1-3/blob/main/src/constants/)
 </br>
