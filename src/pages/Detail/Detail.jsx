@@ -1,4 +1,5 @@
 import Header from "components/Header";
+import CarDetail from "components/CarDetail";
 import { CarContext } from "context/CarContext";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -14,18 +15,11 @@ function Detail() {
   useEffect(() => {
     findCars(id);
   }, [carList]);
-
+  console.log(selectedCar);
   return (
     <section>
       <Header title="차량상세" />
-      {selectedCar?.length && (
-        <>
-          <div>
-            {selectedCar[0]?.attribute.brand}
-            {selectedCar[0]?.attribute.name}
-          </div>
-        </>
-      )}
+      {selectedCar?.length && <CarDetail selectedCar={selectedCar[0]} />}
     </section>
   );
 }
