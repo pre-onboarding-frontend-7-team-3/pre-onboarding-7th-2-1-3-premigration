@@ -43,7 +43,7 @@ $ npm start
     - barrel방식으로 폴더 구조를 구성하여 파일이름의 가독성 높이기
     - baseUrl을 지정하여 import시 경로의 가독성 높이기
 3. 관련 state을 한 곳에 모아 응집도 높이기 
-    - 서버에서 요청받은 데이터, 로딩, 에러의 정보를 C`arContext` 한 곳에 관리하도록 하여 상태흐름 파악이 용이하도록 했습니다.
+    - 서버에서 요청받은 데이터, 로딩, 에러의 정보를 `CarContext` 한 곳에 관리하도록 하여 상태흐름 파악이 용이하도록 했습니다.
     
     ```jsx
     // CarContext.js
@@ -135,6 +135,13 @@ $ npm start
 </br>
 
 ## 🔨 사용 기술
+
+<img alt="HTML5" src ="https://img.shields.io/badge/HTML5-E34F26?&style=flat&logo=HTML5&logoColor=white"/> <img alt="CSS3" src ="https://img.shields.io/badge/CSS3-1572B6?&style=flat&logo=CSS3&logoColor=white"/> <img alt="JavaScript" src ="https://img.shields.io/badge/JavaScript-F7DF1E?&style=flat&logo=JavaScript&logoColor=white"/> <img alt="React" src ="https://img.shields.io/badge/React-61DAFB?&style=flat&logo=React&logoColor=white"/> <img alt="React Router Dom" src ="https://img.shields.io/badge/React_Router_DOM-CA4245?&style=flat&logo=ReactRouter&logoColor=white"/>
+
+<img alt="Axios" src ="https://img.shields.io/badge/Axios-5A29E4?&style=flat&logo=Axios&logoColor=white"/> <img alt="styled-components" src ="https://img.shields.io/badge/styled components-DB7093?&style=flat&logo=styled-components&logoColor=white"/> <img alt="react-responsive" src ="https://img.shields.io/badge/react responsive-000000?&style=flat&logoColor=white"/>
+
+<img alt="Git" src ="https://img.shields.io/badge/Git-F05032?&style=flat&logo=Git&logoColor=white"/> <img alt="GitHub" src ="https://img.shields.io/badge/GitHub-181717?&style=flat&logo=GitHub&logoColor=white"/> <img alt="Notion" src ="https://img.shields.io/badge/Notion-000000?&style=flat&logo=Notion&logoColor=white"/>
+
 
 </br>
 
