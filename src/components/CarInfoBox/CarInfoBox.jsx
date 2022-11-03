@@ -3,7 +3,8 @@ import * as Style from "./CarInfoBox.style";
 import { Link } from "react-router-dom";
 import formatAttribute from "utils/formatAttribute";
 
-function CarInfoBox({ attribute: { brand, name, segment, fuelType }, amount, id }) {
+function CarInfoBox({ attribute: { brand, name, segment, fuelType, imageUrl }, amount, id }) {
+  console.log(imageUrl);
   return (
     <Style.Wrapper>
       <Link to={`/detail/${id}`}>
@@ -34,6 +35,7 @@ function CarInfoBox({ attribute: { brand, name, segment, fuelType }, amount, id 
                 신규
               </Button>
             </Style.ButtonWrapper>
+            
           </Style.ImageWrapper>
         </Style.InnerWrapper>
       </Link>
