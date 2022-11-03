@@ -4,8 +4,11 @@ export const NavContext = createContext("");
 
 function NavContextWrapper({ children }) {
   const [navScrollXIdx, setNavScrollXIdx] = useState(0);
-
-  const value = useMemo(() => ({ navScrollXIdx, setNavScrollXIdx }), [navScrollXIdx]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const value = useMemo(
+    () => ({ navScrollXIdx, setNavScrollXIdx, selectedCategory, setSelectedCategory }),
+    [navScrollXIdx, selectedCategory],
+  );
 
   return <NavContext.Provider value={value}>{children}</NavContext.Provider>;
 }
