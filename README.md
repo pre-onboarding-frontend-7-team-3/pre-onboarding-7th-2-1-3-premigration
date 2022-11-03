@@ -269,7 +269,7 @@ const App = () => {
 
 ## 🔨 사용 기술
 
-<img alt="HTML5" src ="https://img.shields.io/badge/HTML5-E34F26?&style=flat&logo=HTML5&logoColor=white"/> <img alt="CSS3" src ="https://img.shields.io/badge/CSS3-1572B6?&style=flat&logo=CSS3&logoColor=white"/> <img alt="JavaScript" src ="https://img.shields.io/badge/JavaScript-F7DF1E?&style=flat&logo=JavaScript&logoColor=white"/> <img alt="React" src ="https://img.shields.io/badge/React-61DAFB?&style=flat&logo=React&logoColor=white"/> <img alt="React Router Dom" src ="https://img.shields.io/badge/React_Router_DOM-CA4245?&style=flat&logo=ReactRouter&logoColor=white"/>
+<img alt="HTML5" src ="https://img.shields.io/badge/HTML5-E34F26?&style=flat&logo=HTML5&logoColor=white"/> <img alt="CSS3" src ="https://img.shields.io/badge/CSS3-1572B6?&style=flat&logo=CSS3&logoColor=white"/> <img alt="JavaScript" src ="https://img.shields.io/badge/JavaScript-F7DF1E?&style=flat&logo=JavaScript&logoColor=white"/> <img alt="React" src ="https://img.shields.io/badge/React-61DAFB?&style=flat&logo=React&logoColor=white"/> <img alt="NextJS" src ="https://img.shields.io/badge/Next.js-000000?&style=flat&logo=Next.js&logoColor=white"/>
 
 <img alt="Axios" src ="https://img.shields.io/badge/Axios-5A29E4?&style=flat&logo=Axios&logoColor=white"/> <img alt="styled-components" src ="https://img.shields.io/badge/styled components-DB7093?&style=flat&logo=styled-components&logoColor=white"/> <img alt="react-responsive" src ="https://img.shields.io/badge/react responsive-000000?&style=flat&logoColor=white"/>
 
@@ -289,33 +289,33 @@ const App = () => {
 │   │   ├── 📄 Button // props로 스타일을 받아 커스텀하여 사용할 수 있는 버튼
 │   │   ├── 📄 Icon // props로 아이콘 이름을 받아 svg를 꺼내 사용할 수 있는 컴포넌트
 │   │   ├── 📄 Loading // 데이터가 응답되기 전에 로딩중 텍스트를 보여주는 컴포넌트
-│   │   ├── 📄 NoData // 보여줄 데이터가 없을 때 텍스트를 보여주는 컴포넌트
+│   │   └── 📄 NoData // 보여줄 데이터가 없을 때 텍스트를 보여주는 컴포넌트
 │   ├── 📂 CarDetail // 차량 상세 페이지에 사용되는 컴포넌트
 │   ├── 📂 CarListItem // 차량 리스트에 사용되는 하나의 차량 정보에 대한 컴포넌트
 │   ├── 📂 CarList // 차량 리스트 컴포넌트
 │   ├── 📂 Header // 페이지 제목을 나타내는 컴포넌트
 │   └── 📂 Nav // 차량 카테고리 컴포넌트
 ├── 📂 constants // 상수 관리
-│   │
 ├── 📂 context // context API 관리
 │   ├── 📄 CarContext // 차량 정보 관련 Context
 │   └── 📄 NavContext // 차량 카테고리 관련 Context
-├── 📂 pages // 페이지 관리
-│   ├── 📂 Home
-│   ├── 📂 Detail
-│   └── 📂 Error
-├── 📂 styles // global style 적용
-│   ├── 📄 GlobalStyle
-│   └── 📄 Theme
-├── 📂 store // context API 관리
-│   └── 📄 IssuesContext
+├── 📂 helpers // reducer 관리
+│   └── 📄 useCarReducer
 ├── 📂 utils // 공통적으로 사용되는 util 함수 관리
 │   ├── 📄 formatAttribute // api를 통해 제공받는 차량정보 한글로 변경
-│   ├── 📄 formatDate // api를 통해 제공받는 날짜정보 출력
+│   ├── 📄 CarInfoConverter // api를 통해 제공받는 차량정보 한글로 변경
+│   ├── 📄 dateParse // api를 통해 제공받는 날짜정보 출력
 │   └── 📄 isNewCar // 신규 차량인지 확인하는 함수
-├── 📄 App
-└── 📄 index
-
+├── 📂 pages // 페이지 관리
+│   ├── 📂 detail
+│   │   └── 📄 [id].js
+│   ├── 📄 _app
+│   ├── 📄 _document
+│   ├── 📄 _error
+│   └── 📄 index
+└── 📂 styles // global style 적용
+    ├── 📄 GlobalStyle
+    └── 📄 Theme
 ```
 
 </br>
