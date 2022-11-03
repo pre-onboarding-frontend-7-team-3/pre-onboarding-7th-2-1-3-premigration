@@ -9,10 +9,10 @@ export const Wrapper = styled.article`
   max-width: 450px;
   height: 120px;
 
-  /* padding: 0 17px; */
-
   border-bottom: 1px solid black;
   background-color: ${(props) => props.theme.WHITE};
+
+  cursor: pointer;
 `;
 
 export const InnerWrapper = styled.div`
